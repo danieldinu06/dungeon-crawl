@@ -6,6 +6,7 @@ import com.codecool.dungeoncrawl.logic.Drawable;
 public abstract class Actor implements Drawable {
     private Cell cell;
     private int health = 10;
+    private int attack;
 
     public Actor(Cell cell) {
         this.cell = cell;
@@ -34,4 +35,29 @@ public abstract class Actor implements Drawable {
     public int getY() {
         return cell.getY();
     }
+
+    public int getAttack(){
+        return attack;
+    }
+
+    public void setAttack(int attack){
+        this.attack = attack;
+    }
+
+    public void setHealth(int health){
+        this.health = health;
+    }
+
+
+    public boolean fight(Player player, Actor monster){
+        while(player.getHealth() >= 1 && monster.getHealth() >= 1){
+            monster.setHealth(monster.getHealth() - player.getAttack());
+            player.setHealth(monster.getHealth() - player.getAttack());
+        }
+        if(monster.getHealth() <= 0){
+            return true;
+        }
+        else return false;
+    }
+
 }
