@@ -8,6 +8,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -15,13 +16,19 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.lang.reflect.Array;
+
 public class Main extends Application {
     GameMap map = MapLoader.loadMap();
     Canvas canvas = new Canvas(
             map.getWidth() * Tiles.TILE_WIDTH,
             map.getHeight() * Tiles.TILE_WIDTH);
     GraphicsContext context = canvas.getGraphicsContext2D();
+    Button quitButton = new Button("Quit");
     Label healthLabel = new Label();
+    Label attackLabel = new Label();
+    Label inventoryLabel = new Label();
+
 
     public static void main(String[] args) {
         launch(args);
@@ -35,6 +42,16 @@ public class Main extends Application {
 
         ui.add(new Label("Health: "), 0, 0);
         ui.add(healthLabel, 1, 0);
+
+        ui.add(new Label("Attack Damage: "), 0, 5);
+        ui.add(attackLabel, 1, 0);
+
+        ui.add(new Label("Inventory: "), 0, 10);
+        ui.add(inventoryLabel, 10, 0);
+
+//        ui.add(new Button("Quit Game"), 50, 150);
+
+
 
         BorderPane borderPane = new BorderPane();
 
