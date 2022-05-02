@@ -3,12 +3,16 @@ package com.codecool.dungeoncrawl.logic.actors;
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.Drawable;
+import com.codecool.dungeoncrawl.logic.weapons.Weapon;
+
+import java.util.ArrayList;
 
 public abstract class Actor implements Drawable {
     private Cell cell;
     private int health = 10;
     private int attack = 5;
     private boolean picked = false;
+    private ArrayList<String> weapons = new ArrayList<>();
 
     public Actor(Cell cell) {
         this.cell = cell;
@@ -33,6 +37,7 @@ public abstract class Actor implements Drawable {
             cell.setActor(null);
             if (nextCell.getType() == CellType.SWORD || nextCell.getType() == CellType.AXE) {
                 this.attack += nextCell.getWeapon().getAttack();
+                weapons.add(nextCell.getWeapon().getTileName());
                 this.picked = true;
             }
             nextCell.setActor(this);
@@ -70,6 +75,10 @@ public abstract class Actor implements Drawable {
 
     public void setHealth(int health){
         this.health = health;
+    }
+
+    public ArrayList<String> getWeapons() {
+        return weapons;
     }
 
 
