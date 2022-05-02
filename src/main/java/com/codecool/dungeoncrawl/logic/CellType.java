@@ -4,6 +4,7 @@ public enum CellType {
     EMPTY("empty"),
     FLOOR("floor"),
     BAT("bat"),
+    SKELETON("skeleton"),
     KNIGHT("knight"),
     BEAR("bear"),
     SWORD("sword"),
@@ -16,6 +17,7 @@ public enum CellType {
     TREE("tree"),
     FENCE("fence"),
     BUSH("bush"),
+    TELEPORT("beacon"),
     WALL("wall");
 
 
