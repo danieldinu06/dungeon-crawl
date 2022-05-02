@@ -15,7 +15,10 @@ public abstract class Actor implements Drawable {
     }
 
     public boolean restrictMovement(Cell nextCell) {
-        return nextCell.getType() != CellType.WALL;
+        return nextCell.getType() != CellType.WALL &&
+                nextCell.getType() != CellType.WATER &&
+                nextCell.getType() != CellType.FENCE &&
+                nextCell.getType() != CellType.HOUSE;
     }
 
     public void move(int dx, int dy) {

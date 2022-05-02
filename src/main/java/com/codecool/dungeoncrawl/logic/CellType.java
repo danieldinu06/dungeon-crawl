@@ -5,6 +5,7 @@ public enum CellType {
     FLOOR("floor"),
     BAT("bat"),
     KNIGHT("knight"),
+    BEAR("bear"),
     SWORD("sword"),
     WATER("water"),
     BRIDGE("bridge"),
@@ -12,6 +13,9 @@ public enum CellType {
     DOOR("door"),
     KEY("key"),
     AXE("axe"),
+    TREE("tree"),
+    FENCE("fence"),
+    BUSH("bush"),
     WALL("wall");
 
 
