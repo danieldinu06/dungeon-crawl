@@ -3,11 +3,16 @@ package com.codecool.dungeoncrawl.logic.actors;
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.Drawable;
+import com.codecool.dungeoncrawl.logic.weapons.Sword;
+import com.codecool.dungeoncrawl.logic.weapons.Weapon;
+
+import java.util.ArrayList;
 
 public abstract class Actor implements Drawable {
     private Cell cell;
     private int health = 10;
     private int attack = 5;
+    private ArrayList<Weapon> weapons = new ArrayList<Weapon>();
 
     public Actor(Cell cell) {
         this.cell = cell;
@@ -18,20 +23,30 @@ public abstract class Actor implements Drawable {
         return nextCell.getType() != CellType.WALL &&
                 nextCell.getType() != CellType.WATER &&
                 nextCell.getType() != CellType.FENCE &&
-                nextCell.getType() != CellType.HOUSE;
+                nextCell.getType() != CellType.HOUSE &&
+                nextCell.getType() != CellType.SWORD &&
+                nextCell.getType() != CellType.AXE &&
+                nextCell.getType() != CellType.BEAR &&
+                nextCell.getType() != CellType.KNIGHT &&
+                nextCell.getType() != CellType.SKELETON;
     }
 
     public void move(int dx, int dy) {
         Cell nextCell = cell.getNeighbor(dx, dy);
         if (restrictMovement(nextCell)) {
             cell.setActor(null);
+//            if (nextCell.getType() == CellType.SWORD) {
+//                pickUpWeapon();
+//            }
             nextCell.setActor(this);
             cell = nextCell;
         }
     }
 
-    public void pickUpWeapon(Cell cell) {
-        //cell.get;
+    public void pickUpWeapon(Weapon weapon) {
+        this.weapons.add(weapon);
+        this.attack += weapon.getAttack();
+        weapon.removeWeaponFromMap();
     }
 
     public int getHealth() {

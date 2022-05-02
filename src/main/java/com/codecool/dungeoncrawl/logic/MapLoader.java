@@ -52,7 +52,7 @@ public class MapLoader {
                             break;
                         case '/':
                             cell.setType(CellType.SWORD);
-                            map.setWeapon(new Sword(cell));
+                            map.setWeapon(new Sword(cell, 5));
                             break;
                         case 'w':
                             cell.setType(CellType.WATER);
