@@ -16,6 +16,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+
+import java.awt.event.ActionEvent;
+import java.beans.EventHandler;
 import java.lang.reflect.Array;
 
 public class Main extends Application {
@@ -49,7 +52,7 @@ public class Main extends Application {
         ui.add(new Label("Inventory: "), 0, 10);
         ui.add(inventoryLabel, 10, 0);
 
-//        ui.add(new Button("Quit Game"), 50, 150);
+//        ui.add(quitButton, 50, 150);
 
 
 
@@ -57,6 +60,10 @@ public class Main extends Application {
 
         borderPane.setCenter(canvas);
         borderPane.setRight(ui);
+
+//        quitButton.addEventHandler(processQuit);
+//        EventHandler<ActionEvent> processQuit = actionEvent -> {};
+
 
         Scene scene = new Scene(borderPane);
         primaryStage.setScene(scene);

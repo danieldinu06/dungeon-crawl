@@ -3,10 +3,15 @@ package com.codecool.dungeoncrawl.logic;
 public enum CellType {
     EMPTY("empty"),
     FLOOR("floor"),
-    MOB("mob"),
+    BAT("bat"),
+    KNIGHT("knight"),
     SWORD("sword"),
     WATER("water"),
     BRIDGE("bridge"),
+    HOUSE("house"),
+    DOOR("door"),
+    KEY("key"),
+    AXE("axe"),
     WALL("wall");
 
 
