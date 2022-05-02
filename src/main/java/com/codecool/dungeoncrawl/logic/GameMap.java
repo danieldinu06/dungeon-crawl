@@ -1,21 +1,27 @@
 package com.codecool.dungeoncrawl.logic;
 
 import com.codecool.dungeoncrawl.logic.actors.Player;
+import com.codecool.dungeoncrawl.logic.actors.Skeleton;
+import com.codecool.dungeoncrawl.logic.weapons.Sword;
 import com.codecool.dungeoncrawl.logic.weapons.Weapon;
 
+import java.util.ArrayList;
+
 public class GameMap {
-    private int width;
-    private int height;
-    private Cell[][] cells;
+    private final int width;
+    private final int height;
+    private final Cell[][] cells;
 
     private Player player;
-
-    private Weapon weapon;
+    private final Skeleton[][] skeletons;
+    private final Weapon[][] weapons;
 
     public GameMap(int width, int height, CellType defaultCellType) {
         this.width = width;
         this.height = height;
         cells = new Cell[width][height];
+        skeletons = new Skeleton[width][height];
+        weapons = new Weapon[width][height];
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 cells[x][y] = new Cell(this, x, y, defaultCellType);
@@ -31,12 +37,20 @@ public class GameMap {
         this.player = player;
     }
 
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
+    public void addSkeleton(Cell cell) {
+        skeletons[cell.getX()][cell.getY()] = new Skeleton(cell);
+    }
+
+    public void addSword(Cell cell) {
+        weapons[cell.getX()][cell.getY()] = new Sword(cell, 5);
     }
 
     public Player getPlayer() {
         return player;
+    }
+
+    public Skeleton getSkeleton(Cell cell) {
+        return skeletons[cell.getX()][cell.getY()];
     }
 
     public int getWidth() {

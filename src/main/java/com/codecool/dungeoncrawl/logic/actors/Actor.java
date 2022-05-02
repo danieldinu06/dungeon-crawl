@@ -12,7 +12,7 @@ public abstract class Actor implements Drawable {
     private Cell cell;
     private int health = 10;
     private int attack = 5;
-    private ArrayList<Weapon> weapons = new ArrayList<Weapon>();
+    private final ArrayList<Weapon> weapons = new ArrayList<>();
 
     public Actor(Cell cell) {
         this.cell = cell;
@@ -24,7 +24,7 @@ public abstract class Actor implements Drawable {
                 nextCell.getType() != CellType.WATER &&
                 nextCell.getType() != CellType.FENCE &&
                 nextCell.getType() != CellType.HOUSE &&
-                nextCell.getType() != CellType.SWORD &&
+//                nextCell.getType() != CellType.SWORD &&
                 nextCell.getType() != CellType.AXE &&
                 nextCell.getType() != CellType.BEAR &&
                 nextCell.getType() != CellType.KNIGHT &&
@@ -35,9 +35,10 @@ public abstract class Actor implements Drawable {
         Cell nextCell = cell.getNeighbor(dx, dy);
         if (restrictMovement(nextCell)) {
             cell.setActor(null);
-//            if (nextCell.getType() == CellType.SWORD) {
-//                pickUpWeapon();
-//            }
+            if (nextCell.getType() == CellType.SWORD) {
+                Sword sword = (Sword)cell.getWeapon();
+                pickUpWeapon(sword);
+            }
             nextCell.setActor(this);
             cell = nextCell;
         }
@@ -83,9 +84,6 @@ public abstract class Actor implements Drawable {
             monster.setHealth(monster.getHealth() - player.getAttack());
             player.setHealth(monster.getHealth() - player.getAttack());
         }
-        if(monster.getHealth() <= 0){
-            return true;
-        }
-        else return false;
+        return monster.getHealth() <= 0;
     }
 }

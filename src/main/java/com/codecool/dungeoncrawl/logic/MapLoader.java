@@ -39,6 +39,7 @@ public class MapLoader {
                             break;
                         case 's':
                             cell.setType(CellType.SKELETON);
+                            map.addSkeleton(cell);
                             break;
                         case 'd':
                             cell.setType(CellType.DOOR);
@@ -51,7 +52,7 @@ public class MapLoader {
                             break;
                         case '/':
                             cell.setType(CellType.SWORD);
-                            map.setWeapon(new Sword(cell, 5));
+                            map.addSword(cell);
                             break;
                         case 'w':
                             cell.setType(CellType.WATER);

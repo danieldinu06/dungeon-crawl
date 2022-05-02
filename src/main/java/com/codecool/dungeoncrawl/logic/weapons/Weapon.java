@@ -14,10 +14,6 @@ public abstract class Weapon implements Drawable {
         this.cell.setWeapon(this);
     }
 
-    public Cell getWeaponCell() {
-        return this.cell;
-    }
-
     public void removeWeaponFromMap() {
         this.cell.setType(CellType.FLOOR);
     }
