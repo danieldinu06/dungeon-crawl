@@ -1,6 +1,7 @@
 package com.codecool.dungeoncrawl.logic;
 
 import com.codecool.dungeoncrawl.logic.actors.Player;
+import com.codecool.dungeoncrawl.logic.weapons.Weapon;
 
 public class GameMap {
     private int width;
@@ -8,6 +9,8 @@ public class GameMap {
     private Cell[][] cells;
 
     private Player player;
+
+    private Weapon weapon;
 
     public GameMap(int width, int height, CellType defaultCellType) {
         this.width = width;
@@ -28,9 +31,15 @@ public class GameMap {
         this.player = player;
     }
 
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
     public Player getPlayer() {
         return player;
     }
+
+    public Weapon getWeapon() { return weapon; }
 
     public int getWidth() {
         return width;
