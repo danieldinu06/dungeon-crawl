@@ -94,7 +94,7 @@ public class Main extends Application {
                 break;
         }
         if (map.getPlayer().pickUpWeapon()) {
-            map.removeSword(map.getPlayer().getCell());
+            map.removeWeapon(map.getPlayer().getCell());
             map.getPlayer().setPicked();
         }
     }
