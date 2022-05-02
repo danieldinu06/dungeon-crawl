@@ -39,7 +39,6 @@ public class MapLoader {
                             break;
                         case 's':
                             cell.setType(CellType.SKELETON);
-                            map.addSkeleton(cell);
                             break;
                         case 'd':
                             cell.setType(CellType.DOOR);
@@ -52,7 +51,7 @@ public class MapLoader {
                             break;
                         case '/':
                             cell.setType(CellType.SWORD);
-                            map.addSword(cell);
+//                            map.setWeapon(new Sword(cell, 5));
                             break;
                         case 'w':
                             cell.setType(CellType.WATER);
@@ -80,6 +79,15 @@ public class MapLoader {
                             break;
                         case '%':
                             cell.setType(CellType.TELEPORT);
+                            break;
+                        case 'a':
+                            cell.setType(CellType.AXE);
+                            break;
+                        case 'p':
+                            cell.setType(CellType.PEASANT);
+                            break;
+                        case 'e':
+                            cell.setType(CellType.END);
                             break;
                         case '@':
                             cell.setType(CellType.FLOOR);
