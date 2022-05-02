@@ -40,6 +40,10 @@ public class Tiles {
         tileMap.put("fence", new Tile(2, 3));
         tileMap.put("bush", new Tile(7, 1));
         tileMap.put("knight", new Tile(29, 0));
+        tileMap.put("beacon", new Tile(22, 3));
+        tileMap.put("axe", new Tile(8, 29));
+        tileMap.put("peasant", new Tile(25, 1));
+        tileMap.put("end", new Tile(23, 11));
 
     }
 

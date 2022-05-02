@@ -18,6 +18,9 @@ public enum CellType {
     FENCE("fence"),
     BUSH("bush"),
     TELEPORT("beacon"),
+    PEASANT("peasant"),
+    WOLF("wolf"),
+    END("end"),
     WALL("wall");
 
 
