@@ -22,10 +22,11 @@ public abstract class Actor implements Drawable {
                 nextCell.getType() != CellType.WATER &&
                 nextCell.getType() != CellType.FENCE &&
                 nextCell.getType() != CellType.HOUSE &&
-//                nextCell.getType() != CellType.SWORD &&
+                nextCell.getType() != CellType.SWORD &&
                 nextCell.getType() != CellType.AXE &&
                 nextCell.getType() != CellType.BEAR &&
-                nextCell.getType() != CellType.KNIGHT &&
+                nextCell.getType() != CellType.PEASANT &&
+//                nextCell.getType() != CellType.KNIGHT &&
                 nextCell.getType() != CellType.SKELETON;
     }
 
