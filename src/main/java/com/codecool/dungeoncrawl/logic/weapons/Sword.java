@@ -4,8 +4,8 @@ import com.codecool.dungeoncrawl.logic.Cell;
 
 public class Sword extends Weapon{
 
-    public Sword(Cell cell, int attack) {
-        super(cell, attack);
+    public Sword(int attack) {
+        super(attack);
     }
 
     @Override

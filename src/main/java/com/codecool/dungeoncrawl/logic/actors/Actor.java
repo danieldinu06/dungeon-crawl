@@ -6,13 +6,11 @@ import com.codecool.dungeoncrawl.logic.Drawable;
 import com.codecool.dungeoncrawl.logic.weapons.Sword;
 import com.codecool.dungeoncrawl.logic.weapons.Weapon;
 
-import java.util.ArrayList;
-
 public abstract class Actor implements Drawable {
     private Cell cell;
     private int health = 10;
     private int attack = 5;
-    private final ArrayList<Weapon> weapons = new ArrayList<>();
+    private boolean picked = false;
 
     public Actor(Cell cell) {
         this.cell = cell;
@@ -35,19 +33,21 @@ public abstract class Actor implements Drawable {
         Cell nextCell = cell.getNeighbor(dx, dy);
         if (restrictMovement(nextCell)) {
             cell.setActor(null);
-            if (nextCell.getType() == CellType.SWORD) {
-                Sword sword = (Sword)cell.getWeapon();
-                pickUpWeapon(sword);
+            if (nextCell.getType() == CellType.SWORD || nextCell.getType() == CellType.AXE) {
+                this.attack += nextCell.getWeapon().getAttack();
+                this.picked = true;
             }
             nextCell.setActor(this);
             cell = nextCell;
         }
     }
 
-    public void pickUpWeapon(Weapon weapon) {
-        this.weapons.add(weapon);
-        this.attack += weapon.getAttack();
-        weapon.removeWeaponFromMap();
+    public boolean pickUpWeapon() {
+        return picked;
+    }
+
+    public void setPicked() {
+        this.picked = false;
     }
 
     public int getHealth() {
@@ -68,10 +68,6 @@ public abstract class Actor implements Drawable {
 
     public int getAttack(){
         return attack;
-    }
-
-    public void setAttack(int attack){
-        this.attack = attack;
     }
 
     public void setHealth(int health){
