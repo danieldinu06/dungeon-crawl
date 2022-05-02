@@ -39,8 +39,6 @@ public class GameMap {
         return player;
     }
 
-    public Weapon getWeapon() { return weapon; }
-
     public int getWidth() {
         return width;
     }
