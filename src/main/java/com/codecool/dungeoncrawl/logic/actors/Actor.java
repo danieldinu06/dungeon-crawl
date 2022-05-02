@@ -3,8 +3,6 @@ package com.codecool.dungeoncrawl.logic.actors;
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.Drawable;
-import com.codecool.dungeoncrawl.logic.weapons.Sword;
-import com.codecool.dungeoncrawl.logic.weapons.Weapon;
 
 public abstract class Actor implements Drawable {
     private Cell cell;
@@ -23,9 +21,9 @@ public abstract class Actor implements Drawable {
                 nextCell.getType() != CellType.FENCE &&
                 nextCell.getType() != CellType.HOUSE &&
 //                nextCell.getType() != CellType.SWORD &&
-                nextCell.getType() != CellType.AXE &&
+//                nextCell.getType() != CellType.AXE &&
                 nextCell.getType() != CellType.BEAR &&
-                nextCell.getType() != CellType.KNIGHT &&
+//                nextCell.getType() != CellType.KNIGHT &&
                 nextCell.getType() != CellType.SKELETON;
     }
 

@@ -2,6 +2,7 @@ package com.codecool.dungeoncrawl.logic;
 
 import com.codecool.dungeoncrawl.logic.actors.Player;
 import com.codecool.dungeoncrawl.logic.actors.Skeleton;
+import com.codecool.dungeoncrawl.logic.weapons.Axe;
 import com.codecool.dungeoncrawl.logic.weapons.Sword;
 import com.codecool.dungeoncrawl.logic.weapons.Weapon;
 
@@ -46,7 +47,12 @@ public class GameMap {
         cell.setWeapon(weapons[cell.getX()][cell.getY()]);
     }
 
-    public void removeSword(Cell cell) {
+    public void addAxe(Cell cell) {
+        weapons[cell.getX()][cell.getY()] = new Axe(10);
+        cell.setWeapon(weapons[cell.getX()][cell.getY()]);
+    }
+
+    public void removeWeapon(Cell cell) {
         weapons[cell.getX()][cell.getY()] = null;
         cells[cell.getX()][cell.getY()].setType(CellType.FLOOR);
     }
