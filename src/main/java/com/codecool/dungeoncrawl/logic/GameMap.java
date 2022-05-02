@@ -42,7 +42,13 @@ public class GameMap {
     }
 
     public void addSword(Cell cell) {
-        weapons[cell.getX()][cell.getY()] = new Sword(cell, 5);
+        weapons[cell.getX()][cell.getY()] = new Sword(5);
+        cell.setWeapon(weapons[cell.getX()][cell.getY()]);
+    }
+
+    public void removeSword(Cell cell) {
+        weapons[cell.getX()][cell.getY()] = null;
+        cells[cell.getX()][cell.getY()].setType(CellType.FLOOR);
     }
 
     public Player getPlayer() {

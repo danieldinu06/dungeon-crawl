@@ -93,6 +93,10 @@ public class Main extends Application {
                 refresh();
                 break;
         }
+        if (map.getPlayer().pickUpWeapon()) {
+            map.removeSword(map.getPlayer().getCell());
+            map.getPlayer().setPicked();
+        }
     }
 
     private void refresh() {
@@ -109,5 +113,6 @@ public class Main extends Application {
             }
         }
         healthLabel.setText("" + map.getPlayer().getHealth());
+        attackLabel.setText("\n" + map.getPlayer().getAttack());
     }
 }
