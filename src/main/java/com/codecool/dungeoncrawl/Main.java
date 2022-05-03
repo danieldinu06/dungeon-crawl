@@ -3,7 +3,10 @@ package com.codecool.dungeoncrawl;
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
+<<<<<<< HEAD
+=======
 import com.codecool.dungeoncrawl.logic.actors.Enemy;
+>>>>>>> f75e7abc1de481f38ed3fd9e2980775f69eed5a8
 import com.codecool.dungeoncrawl.logic.actors.Skeleton;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -18,7 +21,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 
+<<<<<<< HEAD
+=======
 import javax.print.attribute.standard.Media;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -32,6 +38,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+>>>>>>> f75e7abc1de481f38ed3fd9e2980775f69eed5a8
 
 public class Main extends Application {
     private final static String[] maps = {"/map.txt", "/map2.txt", "/map3.txt"};
@@ -69,20 +76,29 @@ public class Main extends Application {
         ui.add(new Label("Inventory: "), 0, 10);
         ui.add(inventoryLabel, 10, 0);
 
+<<<<<<< HEAD
+        //ui.add(quitButton, 50, 150);
+=======
 //        ui.add(quitButton, 50, 150);
 //        quitButton.setOnAction(this::handleQuitButtonEvent);
 
+>>>>>>> f75e7abc1de481f38ed3fd9e2980775f69eed5a8
 
+        quitButton.getStyleClass().add("quit-button");
 
         BorderPane borderPane = new BorderPane();
 
         borderPane.setCenter(canvas);
         borderPane.setRight(ui);
 
+<<<<<<< HEAD
+=======
 
 
 
+>>>>>>> f75e7abc1de481f38ed3fd9e2980775f69eed5a8
         Scene scene = new Scene(borderPane);
+        //scene.getStylesheets().add("CSS/Button.css");
         primaryStage.setScene(scene);
         refresh();
         scene.setOnKeyPressed(this::onKeyPressed);
@@ -90,6 +106,10 @@ public class Main extends Application {
         primaryStage.setTitle("Dungeon Crawl");
         primaryStage.show();
 
+<<<<<<< HEAD
+        //quitButton.setOnAction(this::handleQuitButtonEvent);
+=======
+>>>>>>> f75e7abc1de481f38ed3fd9e2980775f69eed5a8
     }
 
     private void handleQuitButtonEvent(javafx.event.ActionEvent actionEvent) {
@@ -122,6 +142,11 @@ public class Main extends Application {
                 break;
         }
 
+<<<<<<< HEAD
+        refreshSkeletons();
+
+=======
+>>>>>>> f75e7abc1de481f38ed3fd9e2980775f69eed5a8
         if (map.getPlayer().pickUpWeapon()) {
             map.removeWeapon(map.getPlayer().getCell());
             map.getPlayer().setPicked();
@@ -129,6 +154,14 @@ public class Main extends Application {
 
     }
 
+<<<<<<< HEAD
+    public void refreshSkeletons() {
+        for (Skeleton skeleton : map.getSkeletons()) {
+            System.out.println(skeleton.getCell());
+        }
+    }
+
+=======
     Sound sound = new Sound();
 
     public void playMusic(int i){
@@ -143,6 +176,7 @@ public class Main extends Application {
 
 
 
+>>>>>>> f75e7abc1de481f38ed3fd9e2980775f69eed5a8
     private void refresh() {
         context.setFill(Color.BLACK);
         context.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());

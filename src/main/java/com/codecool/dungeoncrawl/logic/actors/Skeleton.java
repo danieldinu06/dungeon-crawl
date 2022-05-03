@@ -1,6 +1,7 @@
 package com.codecool.dungeoncrawl.logic.actors;
 
 import com.codecool.dungeoncrawl.logic.Cell;
+import com.codecool.dungeoncrawl.logic.CellType;
 
 import java.util.Random;
 
@@ -14,28 +15,37 @@ public class Skeleton extends Actor {
         return "skeleton";
     }
 
+<<<<<<< HEAD
+    public int[] move(){
+=======
     public int[] move(int x){
+>>>>>>> f75e7abc1de481f38ed3fd9e2980775f69eed5a8
         int dx = 0;
         int dy = 0;
         switch (getMovementNumber()){
             case 1:
-                dx = 0;
                 dy = -1;
                 break;
             case 2:
-                dx = 0;
                 dy = 1;
                 break;
             case 3:
                 dx = -1;
-                dy = 0;
                 break;
             case 4:
                 dx = 1;
-                dy = 0;
                 break;
         }
+<<<<<<< HEAD
+
+        Cell nextCell = this.getCell().getNeighbor(dx, dy);
+        if (!restrictMovement(nextCell)) {
+            move();
+        }
+        return new int[] {dx, dy};
+=======
         return new int[]{dx, dy};
+>>>>>>> f75e7abc1de481f38ed3fd9e2980775f69eed5a8
     }
 
 
