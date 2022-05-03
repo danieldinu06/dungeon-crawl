@@ -30,6 +30,8 @@ public abstract class Actor implements Drawable {
 //                nextCell.getType() != CellType.KNIGHT &&
                 nextCell.getType() != CellType.SKELETON &&
                 nextCell.getType() != CellType.PEAK;
+                nextCell.getType() != CellType.PEAK &&
+                nextCell.getType() != CellType.SKELETON;
     }
 
     public void move(int dx, int dy) {
@@ -72,6 +74,9 @@ public abstract class Actor implements Drawable {
         return items;
     }
 
+    private boolean isDoorClosed(Cell nextCell){
+        return nextCell.getType().equals(CellType.DOOR);
+    }
 
     public boolean fight(Player player, Actor monster){
         while(player.getHealth() >= 1 && monster.getHealth() >= 1){

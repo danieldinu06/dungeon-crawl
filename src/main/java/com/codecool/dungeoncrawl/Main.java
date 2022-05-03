@@ -100,9 +100,14 @@ public class Main extends Application {
                 map.getPlayer().move(1,0);
                 refresh();
                 break;
-            case R:
+            case T:
                 currentLevel = 0;
+<<<<<<< HEAD
                 map = MapLoader.loadMap(maps[currentLevel]);
+=======
+                enemies = new ArrayList<>();
+                map = MapLoader.loadMap(enemies, maps[currentLevel]);
+>>>>>>> 79e90a325439395536148edd939e2dddcec01691
                 refresh();
                 break;
         }

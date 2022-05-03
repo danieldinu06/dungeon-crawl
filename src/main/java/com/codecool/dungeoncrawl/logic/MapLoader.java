@@ -86,7 +86,7 @@ public class MapLoader {
                             cell.setType(CellType.KNIGHT);
                             map.addKnight(cell, 20, 10);
                             break;
-                        case '%':
+                        case 'T':
                             cell.setType(CellType.TELEPORT);
                             break;
                         case 'a':
@@ -99,6 +99,12 @@ public class MapLoader {
                         case 'e':
                             cell.setType(CellType.END);
                             break;
+                        case '!':
+                            cell.setType(CellType.PEAK);
+                            break;
+                        case 'l':
+                            cell.setType(CellType.HIGHLAND);
+                            break;
                         case '@':
                             cell.setType(CellType.FLOOR);
                             map.setPlayer(new Player(cell));
@@ -109,7 +115,6 @@ public class MapLoader {
                 }
             }
         }
-
         return map;
     }
 }
