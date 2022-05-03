@@ -1,19 +1,10 @@
 package com.codecool.dungeoncrawl.logic;
 
 import com.codecool.dungeoncrawl.logic.actors.Player;
-import com.codecool.dungeoncrawl.logic.enemies.Bat;
-import com.codecool.dungeoncrawl.logic.enemies.Enemy;
-import com.codecool.dungeoncrawl.logic.enemies.Knight;
-import com.codecool.dungeoncrawl.logic.enemies.Skeleton;
+import com.codecool.dungeoncrawl.logic.enemies.*;
 import com.codecool.dungeoncrawl.logic.items.Key;
-import com.codecool.dungeoncrawl.logic.landscapes.Bridge;
-import com.codecool.dungeoncrawl.logic.landscapes.Bush;
-import com.codecool.dungeoncrawl.logic.landscapes.Landscape;
-import com.codecool.dungeoncrawl.logic.landscapes.Tree;
-import com.codecool.dungeoncrawl.logic.obstacles.Door;
-import com.codecool.dungeoncrawl.logic.obstacles.Fence;
-import com.codecool.dungeoncrawl.logic.obstacles.Obstacle;
-import com.codecool.dungeoncrawl.logic.obstacles.Wall;
+import com.codecool.dungeoncrawl.logic.landscapes.*;
+import com.codecool.dungeoncrawl.logic.obstacles.*;
 import com.codecool.dungeoncrawl.logic.weapons.Axe;
 import com.codecool.dungeoncrawl.logic.weapons.Sword;
 import com.codecool.dungeoncrawl.logic.weapons.Weapon;
@@ -27,7 +18,6 @@ public class GameMap {
     private Player player;
     private final ArrayList<Enemy> enemies = new ArrayList<>();
     private final ArrayList<Weapon> weapons = new ArrayList<>();
-    private final ArrayList<Obstacle> obstacles = new ArrayList<>();
 
 
     public GameMap(int width, int height, CellType defaultCellType) {
@@ -50,15 +40,27 @@ public class GameMap {
     }
 
     public void addKnight(Cell cell, int health, int attack) {
-        enemies.add(new Knight(cell, health, attack));
+        Enemy knight = new Knight(cell, health, attack);
+        enemies.add(knight);
+        cell.setEnemy(knight);
     }
 
     public void addSkeleton(Cell cell, int health, int attack) {
-        enemies.add(new Skeleton(cell, health, attack));
+        Enemy skeleton = new Skeleton(cell, health, attack);
+        enemies.add(skeleton);
+        cell.setEnemy(skeleton);
     }
 
     public void addBat(Cell cell, int health, int attack) {
-        enemies.add(new Bat(cell, health, attack));
+        Enemy bat = new Bat(cell, health, attack);
+        enemies.add(bat);
+        cell.setEnemy(bat);
+    }
+
+    public void addBear(Cell cell, int health, int attack) {
+        Enemy bear = new Bear(cell, health, attack);
+        enemies.add(bear);
+        cell.setEnemy(bear);
     }
 
     public void addSword(Cell cell) {
@@ -76,6 +78,11 @@ public class GameMap {
     public void addWall(Cell cell) {
         Obstacle wall = new Wall(cell);
         cell.setObstacle(wall);
+    }
+
+    public void addDoor(Cell cell) {
+        Obstacle door = new Door(cell);
+        cell.setObstacle(door);
     }
 
     public void addKey(Cell cell) {
@@ -108,8 +115,23 @@ public class GameMap {
         cell.setLandscape(bush);
     }
 
+    public void addHighland(Cell cell) {
+        Landscape highland = new Highland(cell);
+        cell.setLandscape(highland);
+    }
+
+    public void addPeak(Cell cell) {
+        Obstacle peak = new Peak(cell);
+        cell.setObstacle(peak);
+    }
+
+    public void addTombstone(Cell cell) {
+        Landscape tombstone = new Tombstone(cell);
+        cell.setLandscape(tombstone);
+    }
+
     public void removeSkeleton(Cell cell) {
-        enemies.remove(cell.getActor());
+        enemies.remove(cell.getEnemy());
         cells[cell.getX()][cell.getY()].setType(CellType.FLOOR);
     }
 

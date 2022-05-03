@@ -9,9 +9,9 @@ import java.util.Random;
 public abstract class Enemy implements Drawable {
     protected static Random random = new Random();
 
-    private Cell cell;
-    private int health = 5;
-    private int attack = 2;
+    private final Cell cell;
+    private int health;
+    private final int attack;
 
     public Enemy(Cell cell, int health, int attack){
         this.cell = cell;
@@ -27,6 +27,10 @@ public abstract class Enemy implements Drawable {
     public int getHealth() { return health; }
 
     public int getAttack() { return attack; }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
 
     public boolean restrictMovement(Cell nextCell) {
         return nextCell.getType() != CellType.WALL &&

@@ -4,6 +4,7 @@ import com.codecool.dungeoncrawl.logic.actors.Actor;
 import com.codecool.dungeoncrawl.logic.enemies.Enemy;
 import com.codecool.dungeoncrawl.logic.items.Key;
 import com.codecool.dungeoncrawl.logic.landscapes.Landscape;
+import com.codecool.dungeoncrawl.logic.obstacles.Door;
 import com.codecool.dungeoncrawl.logic.obstacles.Obstacle;
 import com.codecool.dungeoncrawl.logic.weapons.Weapon;
 
@@ -13,6 +14,7 @@ public class Cell implements Drawable {
     private Enemy enemy;
     private Weapon weapon;
     private Obstacle obstacle;
+    private Door door;
     private Key key;
 
     private Landscape landscape;
@@ -52,6 +54,10 @@ public class Cell implements Drawable {
 
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
+    }
+
+    public void setDoor(Door door) {
+        this.door = door;
     }
 
     public void setKey(Key key) {
