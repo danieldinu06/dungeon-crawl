@@ -7,7 +7,7 @@
 #......uuuuu#   #..#          #..uuu#
 #######ww$ww#   #..#          #uuuu.#
       #ww$ww#   #..#          #uuuuu#
-      #ww$ww#   #..###        #uuuua#
+      #ww$ww#   #..##         #uuuua#
       #ww$ww#   #...#     ####uuu####
 #######ww$ww#######.#     #huuuuupp#
 #/ttttttt.ttf.......#     #huuuuuph#
