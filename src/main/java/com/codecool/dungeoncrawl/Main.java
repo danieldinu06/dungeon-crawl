@@ -102,12 +102,9 @@ public class Main extends Application {
                 break;
             case T:
                 currentLevel = 0;
-<<<<<<< HEAD
                 map = MapLoader.loadMap(maps[currentLevel]);
-=======
-                enemies = new ArrayList<>();
-                map = MapLoader.loadMap(enemies, maps[currentLevel]);
->>>>>>> 79e90a325439395536148edd939e2dddcec01691
+                map = MapLoader.loadMap(maps[currentLevel]);
+
                 refresh();
                 break;
         }
