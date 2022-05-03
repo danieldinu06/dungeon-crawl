@@ -39,6 +39,7 @@ public class MapLoader {
                             break;
                         case 's':
                             cell.setType(CellType.SKELETON);
+                            map.addSkeleton(cell);
                             break;
                         case 'd':
                             cell.setType(CellType.DOOR);
@@ -102,5 +103,4 @@ public class MapLoader {
         }
         return map;
     }
-
 }

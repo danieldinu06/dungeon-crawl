@@ -12,17 +12,14 @@ public class GameMap {
     private final int width;
     private final int height;
     private final Cell[][] cells;
-
     private Player player;
-    private final Skeleton[][] skeletons;
-    private final Weapon[][] weapons;
+    private final ArrayList<Skeleton> skeletons = new ArrayList<>();
+    private final ArrayList<Weapon> weapons = new ArrayList<>();
 
     public GameMap(int width, int height, CellType defaultCellType) {
         this.width = width;
         this.height = height;
         cells = new Cell[width][height];
-        skeletons = new Skeleton[width][height];
-        weapons = new Weapon[width][height];
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 cells[x][y] = new Cell(this, x, y, defaultCellType);
@@ -39,21 +36,28 @@ public class GameMap {
     }
 
     public void addSkeleton(Cell cell) {
-        skeletons[cell.getX()][cell.getY()] = new Skeleton(cell);
+        skeletons.add(new Skeleton(cell));
+    }
+
+    public void removeSkeleton(Cell cell) {
+        skeletons.remove(cell.getActor());
+        cells[cell.getX()][cell.getY()].setType(CellType.FLOOR);
     }
 
     public void addSword(Cell cell) {
-        weapons[cell.getX()][cell.getY()] = new Sword(5);
-        cell.setWeapon(weapons[cell.getX()][cell.getY()]);
+        Weapon sword = new Sword(5);
+        weapons.add(sword);
+        cell.setWeapon(sword);
     }
 
     public void addAxe(Cell cell) {
-        weapons[cell.getX()][cell.getY()] = new Axe(10);
-        cell.setWeapon(weapons[cell.getX()][cell.getY()]);
+        Weapon axe = new Axe(10);
+        weapons.add(axe);
+        cell.setWeapon(axe);
     }
 
     public void removeWeapon(Cell cell) {
-        weapons[cell.getX()][cell.getY()] = null;
+        weapons.remove(cell.getWeapon());
         cells[cell.getX()][cell.getY()].setType(CellType.FLOOR);
     }
 
@@ -61,8 +65,8 @@ public class GameMap {
         return player;
     }
 
-    public Skeleton getSkeleton(Cell cell) {
-        return skeletons[cell.getX()][cell.getY()];
+    public ArrayList<Skeleton> getSkeletons() {
+        return skeletons;
     }
 
     public int getWidth() {

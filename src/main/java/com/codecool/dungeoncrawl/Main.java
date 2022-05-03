@@ -3,6 +3,7 @@ package com.codecool.dungeoncrawl;
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
+import com.codecool.dungeoncrawl.logic.actors.Skeleton;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -16,10 +17,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 
-import java.awt.event.ActionEvent;
-import java.beans.EventHandler;
-import java.lang.reflect.Array;
 
 public class Main extends Application {
     GameMap map = MapLoader.loadMap();
@@ -51,27 +50,25 @@ public class Main extends Application {
         ui.add(new Label("Inventory: "), 0, 10);
         ui.add(inventoryLabel, 10, 0);
 
-        ui.add(quitButton, 50, 150);
-        quitButton.setOnAction(this::handleQuitButtonEvent);
+        //ui.add(quitButton, 50, 150);
 
-
+        quitButton.getStyleClass().add("quit-button");
 
         BorderPane borderPane = new BorderPane();
 
         borderPane.setCenter(canvas);
         borderPane.setRight(ui);
 
-//        quitButton.addEventHandler(processQuit);
-//        EventHandler<ActionEvent> processQuit = actionEvent -> {};
-
-
         Scene scene = new Scene(borderPane);
+        //scene.getStylesheets().add("CSS/Button.css");
         primaryStage.setScene(scene);
         refresh();
         scene.setOnKeyPressed(this::onKeyPressed);
 
         primaryStage.setTitle("Dungeon Crawl");
         primaryStage.show();
+
+        //quitButton.setOnAction(this::handleQuitButtonEvent);
     }
 
     private void handleQuitButtonEvent(javafx.event.ActionEvent actionEvent) {
@@ -97,9 +94,18 @@ public class Main extends Application {
                 refresh();
                 break;
         }
+
+        refreshSkeletons();
+
         if (map.getPlayer().pickUpWeapon()) {
             map.removeWeapon(map.getPlayer().getCell());
             map.getPlayer().setPicked();
+        }
+    }
+
+    public void refreshSkeletons() {
+        for (Skeleton skeleton : map.getSkeletons()) {
+            System.out.println(skeleton.getCell());
         }
     }
 
