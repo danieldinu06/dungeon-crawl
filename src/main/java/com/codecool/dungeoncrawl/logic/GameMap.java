@@ -39,26 +39,26 @@ public class GameMap {
         this.player = player;
     }
 
-    public void addKnight(Cell cell, int health, int attack) {
-        Enemy knight = new Knight(cell, health, attack);
+    public void addKnight(Cell cell, int health, int attack, int money) {
+        Enemy knight = new Knight(cell, health, attack, money);
         enemies.add(knight);
         cell.setEnemy(knight);
     }
 
-    public void addSkeleton(Cell cell, int health, int attack) {
-        Enemy skeleton = new Skeleton(cell, health, attack);
+    public void addSkeleton(Cell cell, int health, int attack, int money) {
+        Enemy skeleton = new Skeleton(cell, health, attack, money);
         enemies.add(skeleton);
         cell.setEnemy(skeleton);
     }
 
-    public void addBat(Cell cell, int health, int attack) {
-        Enemy bat = new Bat(cell, health, attack);
+    public void addBat(Cell cell, int health, int attack, int money) {
+        Enemy bat = new Bat(cell, health, attack, money);
         enemies.add(bat);
         cell.setEnemy(bat);
     }
 
-    public void addBear(Cell cell, int health, int attack) {
-        Enemy bear = new Bear(cell, health, attack);
+    public void addBear(Cell cell, int health, int attack, int money) {
+        Enemy bear = new Bear(cell, health, attack, money);
         enemies.add(bear);
         cell.setEnemy(bear);
     }
@@ -128,6 +128,11 @@ public class GameMap {
     public void addPeasant(Cell cell) {
         Obstacle peasant = new Peasant(cell);
         cell.setObstacle(peasant);
+    }
+
+    public void addTavern(Cell cell) {
+        Obstacle tavern = new Tavern(cell);
+        cell.setObstacle(tavern);
     }
 
     public void removeWeapon(Cell cell) {

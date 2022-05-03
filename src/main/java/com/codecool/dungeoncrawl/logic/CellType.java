@@ -11,7 +11,7 @@ public enum CellType {
     SWORD("sword"),
     WATER("water"),
     BRIDGE("bridge"),
-    HOUSE("house"),
+    TAVERN("tavern"),
     DOOR("door"),
     KEY("key"),
     AXE("axe"),

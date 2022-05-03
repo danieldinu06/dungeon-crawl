@@ -13,6 +13,7 @@ public abstract class Actor implements Drawable {
     private Cell cell;
     private int health = 10;
     private int attack = 5;
+    private int money = 0;
     private boolean picked = false;
 
     private boolean hasKey = false;
@@ -43,6 +44,7 @@ public abstract class Actor implements Drawable {
         if (nextCell.getEnemy() != null) {
             fight(this, nextCell.getEnemy());
             if (nextCell.getEnemy().getHealth() <= 0) {
+                this.money += nextCell.getEnemy().getMoney();
                 nextCell.setEnemy(null);
                 nextCell.setLandscape(new Tombstone(nextCell));
                 nextCell.setType(CellType.TOMBSTONE);
@@ -59,6 +61,12 @@ public abstract class Actor implements Drawable {
                 nextCell.setObstacle(null);
                 nextCell.setLandscape(new UnlockedDoor(nextCell));
                 nextCell.setType(CellType.UNLOCKEDDOOR);
+            }
+        }
+        if (nextCell.getType() == CellType.TAVERN) {
+            if (money >= 3) {
+                health += 12;
+                money -= 3;
             }
         }
     }
@@ -79,6 +87,10 @@ public abstract class Actor implements Drawable {
 
     public int getAttack(){
         return attack;
+    }
+
+    public int getMoney() {
+        return money;
     }
 
     public void setHealth(int health){

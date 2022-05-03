@@ -7,8 +7,8 @@ import com.codecool.dungeoncrawl.logic.enemies.Enemy;
 import java.util.Random;
 
 public class Skeleton extends Enemy {
-    public Skeleton(Cell cell, int health, int attack) {
-        super(cell, health, attack);
+    public Skeleton(Cell cell, int health, int attack, int money) {
+        super(cell, health, attack, money);
     }
 
     @Override

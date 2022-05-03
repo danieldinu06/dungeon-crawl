@@ -8,15 +8,16 @@ import java.util.Random;
 
 public abstract class Enemy implements Drawable {
     protected static Random random = new Random();
-
     private final Cell cell;
     private int health;
     private final int attack;
+    private final int money;
 
-    public Enemy(Cell cell, int health, int attack){
+    public Enemy(Cell cell, int health, int attack, int money){
         this.cell = cell;
         this.health = health;
         this.attack = attack;
+        this.money = money;
         this.cell.setEnemy(this);
     }
 
@@ -28,6 +29,8 @@ public abstract class Enemy implements Drawable {
 
     public int getAttack() { return attack; }
 
+    public int getMoney() { return money; }
+
     public void setHealth(int health) {
         this.health = health;
     }
@@ -36,7 +39,7 @@ public abstract class Enemy implements Drawable {
         return nextCell.getType() != CellType.WALL &&
                 nextCell.getType() != CellType.WATER &&
                 nextCell.getType() != CellType.FENCE &&
-                nextCell.getType() != CellType.HOUSE &&
+                nextCell.getType() != CellType.TAVERN &&
                 nextCell.getType() != CellType.SWORD &&
                 nextCell.getType() != CellType.AXE &&
                 nextCell.getType() != CellType.BEAR &&
