@@ -3,6 +3,10 @@ package com.codecool.dungeoncrawl;
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
+<<<<<<< HEAD
+=======
+import com.codecool.dungeoncrawl.logic.actors.Enemy;
+>>>>>>> f75e7abc1de481f38ed3fd9e2980775f69eed5a8
 import com.codecool.dungeoncrawl.logic.actors.Skeleton;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -19,9 +23,28 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
+<<<<<<< HEAD
+=======
+import javax.print.attribute.standard.Media;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.swing.*;
+import java.applet.AudioClip;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.beans.EventHandler;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+>>>>>>> f75e7abc1de481f38ed3fd9e2980775f69eed5a8
 
 public class Main extends Application {
-    GameMap map = MapLoader.loadMap();
+    private final static String[] maps = {"/map.txt", "/map2.txt", "/map3.txt"};
+    private int currentLevel = 0;
+    ArrayList<Enemy> enemies = new ArrayList<>();
+    GameMap map = MapLoader.loadMap(enemies, maps[currentLevel]);
     Canvas canvas = new Canvas(
             map.getWidth() * Tiles.TILE_WIDTH,
             map.getHeight() * Tiles.TILE_WIDTH);
@@ -30,6 +53,8 @@ public class Main extends Application {
     Label healthLabel = new Label();
     Label attackLabel = new Label();
     Label inventoryLabel = new Label();
+
+
 
     public static void main(String[] args) {
         launch(args);
@@ -50,7 +75,13 @@ public class Main extends Application {
         ui.add(new Label("Inventory: "), 0, 10);
         ui.add(inventoryLabel, 10, 0);
 
+<<<<<<< HEAD
         //ui.add(quitButton, 50, 150);
+=======
+//        ui.add(quitButton, 50, 150);
+//        quitButton.setOnAction(this::handleQuitButtonEvent);
+
+>>>>>>> f75e7abc1de481f38ed3fd9e2980775f69eed5a8
 
         quitButton.getStyleClass().add("quit-button");
 
@@ -59,6 +90,12 @@ public class Main extends Application {
         borderPane.setCenter(canvas);
         borderPane.setRight(ui);
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> f75e7abc1de481f38ed3fd9e2980775f69eed5a8
         Scene scene = new Scene(borderPane);
         //scene.getStylesheets().add("CSS/Button.css");
         primaryStage.setScene(scene);
@@ -68,7 +105,10 @@ public class Main extends Application {
         primaryStage.setTitle("Dungeon Crawl");
         primaryStage.show();
 
+<<<<<<< HEAD
         //quitButton.setOnAction(this::handleQuitButtonEvent);
+=======
+>>>>>>> f75e7abc1de481f38ed3fd9e2980775f69eed5a8
     }
 
     private void handleQuitButtonEvent(javafx.event.ActionEvent actionEvent) {
@@ -93,22 +133,49 @@ public class Main extends Application {
                 map.getPlayer().move(1,0);
                 refresh();
                 break;
+            case R:
+                currentLevel = 0;
+                enemies = new ArrayList<Enemy>();
+                map = MapLoader.loadMap(enemies, maps[currentLevel]);
+                refresh();
+                break;
         }
 
+<<<<<<< HEAD
         refreshSkeletons();
 
+=======
+>>>>>>> f75e7abc1de481f38ed3fd9e2980775f69eed5a8
         if (map.getPlayer().pickUpWeapon()) {
             map.removeWeapon(map.getPlayer().getCell());
             map.getPlayer().setPicked();
         }
+
     }
 
+<<<<<<< HEAD
     public void refreshSkeletons() {
         for (Skeleton skeleton : map.getSkeletons()) {
             System.out.println(skeleton.getCell());
         }
     }
 
+=======
+    Sound sound = new Sound();
+
+    public void playMusic(int i){
+        sound.setFile(i);
+        sound.play();
+        sound.loop();
+    }
+
+    public void stopMusic(){
+        sound.stop();
+    }
+
+
+
+>>>>>>> f75e7abc1de481f38ed3fd9e2980775f69eed5a8
     private void refresh() {
         context.setFill(Color.BLACK);
         context.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());

@@ -16,6 +16,7 @@ public class GameMap {
     private final ArrayList<Skeleton> skeletons = new ArrayList<>();
     private final ArrayList<Weapon> weapons = new ArrayList<>();
 
+
     public GameMap(int width, int height, CellType defaultCellType) {
         this.width = width;
         this.height = height;
@@ -65,7 +66,11 @@ public class GameMap {
         return player;
     }
 
+<<<<<<< HEAD
     public ArrayList<Skeleton> getSkeletons() {
+=======
+    public Skeleton[][] getSkeleton() {
+>>>>>>> f75e7abc1de481f38ed3fd9e2980775f69eed5a8
         return skeletons;
     }
 

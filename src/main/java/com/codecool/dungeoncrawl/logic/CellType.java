@@ -3,6 +3,7 @@ package com.codecool.dungeoncrawl.logic;
 public enum CellType {
     EMPTY("empty"),
     FLOOR("floor"),
+    PLAYER("player"),
     BAT("bat"),
     SKELETON("skeleton"),
     KNIGHT("knight"),
