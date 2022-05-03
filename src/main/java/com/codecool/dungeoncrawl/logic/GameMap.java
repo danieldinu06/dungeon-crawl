@@ -39,26 +39,26 @@ public class GameMap {
         this.player = player;
     }
 
-    public void addKnight(Cell cell, int health, int attack) {
-        Enemy knight = new Knight(cell, health, attack);
+    public void addKnight(Cell cell, int health, int attack, int money) {
+        Enemy knight = new Knight(cell, health, attack, money);
         enemies.add(knight);
         cell.setEnemy(knight);
     }
 
-    public void addSkeleton(Cell cell, int health, int attack) {
-        Enemy skeleton = new Skeleton(cell, health, attack);
+    public void addSkeleton(Cell cell, int health, int attack, int money) {
+        Enemy skeleton = new Skeleton(cell, health, attack, money);
         enemies.add(skeleton);
         cell.setEnemy(skeleton);
     }
 
-    public void addBat(Cell cell, int health, int attack) {
-        Enemy bat = new Bat(cell, health, attack);
+    public void addBat(Cell cell, int health, int attack, int money) {
+        Enemy bat = new Bat(cell, health, attack, money);
         enemies.add(bat);
         cell.setEnemy(bat);
     }
 
-    public void addBear(Cell cell, int health, int attack) {
-        Enemy bear = new Bear(cell, health, attack);
+    public void addBear(Cell cell, int health, int attack, int money) {
+        Enemy bear = new Bear(cell, health, attack, money);
         enemies.add(bear);
         cell.setEnemy(bear);
     }
@@ -125,14 +125,14 @@ public class GameMap {
         cell.setObstacle(peak);
     }
 
-    public void addTombstone(Cell cell) {
-        Landscape tombstone = new Tombstone(cell);
-        cell.setLandscape(tombstone);
+    public void addPeasant(Cell cell) {
+        Obstacle peasant = new Peasant(cell);
+        cell.setObstacle(peasant);
     }
 
-    public void removeSkeleton(Cell cell) {
-        enemies.remove(cell.getEnemy());
-        cells[cell.getX()][cell.getY()].setType(CellType.FLOOR);
+    public void addTavern(Cell cell) {
+        Obstacle tavern = new Tavern(cell);
+        cell.setObstacle(tavern);
     }
 
     public void removeWeapon(Cell cell) {
@@ -142,10 +142,6 @@ public class GameMap {
 
     public Player getPlayer() {
         return player;
-    }
-
-    public ArrayList<Enemy> getEnemies() {
-        return enemies;
     }
 
     public int getWidth() {

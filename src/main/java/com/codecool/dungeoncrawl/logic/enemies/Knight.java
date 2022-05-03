@@ -4,8 +4,8 @@ import com.codecool.dungeoncrawl.logic.Cell;
 
 public class Knight extends Enemy {
 
-    public Knight(Cell cell, int health, int attack) {
-        super(cell, health, attack);
+    public Knight(Cell cell, int health, int attack, int money) {
+        super(cell, health, attack, money);
     }
 
     @Override

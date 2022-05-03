@@ -11,7 +11,7 @@ public enum CellType {
     SWORD("sword"),
     WATER("water"),
     BRIDGE("bridge"),
-    HOUSE("house"),
+    TAVERN("tavern"),
     DOOR("door"),
     KEY("key"),
     AXE("axe"),
@@ -24,7 +24,8 @@ public enum CellType {
     HIGHLAND("highland"),
     END("end"),
     WALL("wall"),
-    TOMBSTONE("tombstone");
+    TOMBSTONE("tombstone"),
+    UNLOCKEDDOOR("unlockeddoor");
 
 
     private final String tileName;

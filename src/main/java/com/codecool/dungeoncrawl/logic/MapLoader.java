@@ -41,7 +41,7 @@ public class MapLoader {
                             break;
                         case 's':
                             cell.setType(CellType.SKELETON);
-                            map.addSkeleton(cell, 5, 2);
+                            map.addSkeleton(cell, 5, 2, 5);
                             break;
                         case 'd':
                             cell.setType(CellType.DOOR);
@@ -53,7 +53,7 @@ public class MapLoader {
                             break;
                         case 'b':
                             cell.setType(CellType.BAT);
-                            map.addBat(cell, 2, 1);
+                            map.addBat(cell, 2, 1, 2);
                             break;
                         case '/':
                             cell.setType(CellType.SWORD);
@@ -72,11 +72,12 @@ public class MapLoader {
                             map.addTree(cell);
                             break;
                         case 'h':
-                            cell.setType(CellType.HOUSE);
+                            cell.setType(CellType.TAVERN);
+                            map.addTavern(cell);
                             break;
                         case '>':
                             cell.setType(CellType.BEAR);
-                            map.addBear(cell, 8, 4);
+                            map.addBear(cell, 8, 4, 7);
                             break;
                         case 'f':
                             cell.setType(CellType.FENCE);
@@ -88,7 +89,7 @@ public class MapLoader {
                             break;
                         case 'n':
                             cell.setType(CellType.KNIGHT);
-                            map.addKnight(cell, 30, 15);
+                            map.addKnight(cell, 30, 15, 12);
                             break;
                         case 'T':
                             cell.setType(CellType.TELEPORT);
@@ -99,6 +100,7 @@ public class MapLoader {
                             break;
                         case 'p':
                             cell.setType(CellType.PEASANT);
+                            map.addPeasant(cell);
                             break;
                         case 'e':
                             cell.setType(CellType.END);

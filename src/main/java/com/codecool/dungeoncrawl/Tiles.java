@@ -35,7 +35,7 @@ public class Tiles {
         tileMap.put("water", new Tile(8, 5));
         tileMap.put("bridge", new Tile(4, 6));
         tileMap.put("tree", new Tile(4, 2));
-        tileMap.put("house", new Tile(8, 20));
+        tileMap.put("tavern", new Tile(8, 20));
         tileMap.put("bear", new Tile(30, 8));
         tileMap.put("fence", new Tile(2, 3));
         tileMap.put("bush", new Tile(7, 1));
@@ -47,6 +47,7 @@ public class Tiles {
         tileMap.put("peak", new Tile(1, 12));
         tileMap.put("highland", new Tile(2, 11));
         tileMap.put("tombstone", new Tile(0, 14));
+        tileMap.put("unlockeddoor", new Tile(6, 9));
 
     }
 
