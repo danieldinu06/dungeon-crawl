@@ -16,6 +16,8 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -55,33 +57,37 @@ public class Main extends Application {
         ui.add(new Label("Inventory: "), 0, 10);
         ui.add(inventoryLabel, 10, 0);
 
-        //ui.add(quitButton, 50, 150);
-
-//        ui.add(quitButton, 50, 150);
-//        quitButton.setOnAction(this::handleQuitButtonEvent);
+        ui.add(quitButton, 50, 150);
+        quitButton.setOnAction(this::handleQuitButtonEvent);
 
 
         quitButton.getStyleClass().add("quit-button");
 
         BorderPane borderPane = new BorderPane();
-
+        canvas.setFocusTraversable(true);
+        ui.setFocusTraversable(true);
         borderPane.setCenter(canvas);
         borderPane.setRight(ui);
 
         Scene scene = new Scene(borderPane);
-        //scene.getStylesheets().add("CSS/Button.css");
+        scene.getStylesheets().add("CSS/Button.css");
         primaryStage.setScene(scene);
         refresh();
         scene.setOnKeyPressed(this::onKeyPressed);
 
         primaryStage.setTitle("Dungeon Crawl");
         primaryStage.show();
-
-        //quitButton.setOnAction(this::handleQuitButtonEvent);
-
-
+        playMusic();
+        quitButton.setOnAction(this::handleQuitButtonEvent);
 
 
+
+
+    }
+
+    private void playMusic(){
+        MediaPlayer mediaPlayer = new MediaPlayer(new Media(getClass().getResource("/sound/music.mp3").toExternalForm()));
+        mediaPlayer.play();
     }
 
     private void handleQuitButtonEvent(javafx.event.ActionEvent actionEvent) {
@@ -89,13 +95,12 @@ public class Main extends Application {
     }
 
     private void moveEnemies() {
-        map.getEnemies().forEach(Enemy::move);
+//        map.getEnemies().forEach(Enemy::move);
     }
 
     private void onKeyPressed(KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
             case UP:
-                System.out.println(map.getEnemies());
                 map.getPlayer().move(0, -1);
                 moveEnemies();
                 refresh();
@@ -148,17 +153,6 @@ public class Main extends Application {
         }
     }*/
 
-    Sound sound = new Sound();
-
-    public void playMusic(int i){
-        sound.setFile(i);
-        sound.play();
-        sound.loop();
-    }
-
-    public void stopMusic(){
-        sound.stop();
-    }
 
     private void refresh() {
         context.setFill(Color.BLACK);
