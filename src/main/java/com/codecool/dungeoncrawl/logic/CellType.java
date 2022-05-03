@@ -20,7 +20,6 @@ public enum CellType {
     BUSH("bush"),
     TELEPORT("beacon"),
     PEASANT("peasant"),
-    WOLF("wolf"),
     PEAK("peak"),
     HIGHLAND("highland"),
     END("end"),

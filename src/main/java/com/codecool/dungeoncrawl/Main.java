@@ -3,7 +3,6 @@ package com.codecool.dungeoncrawl;
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
-import com.codecool.dungeoncrawl.logic.enemies.Enemy;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -17,11 +16,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-
 public class Main extends Application {
     private final static String[] maps = {"/map.txt", "/map2.txt", "/map3.txt"};
-    private int currentLevel = 2;
+    private int currentLevel = 0;
     GameMap map = MapLoader.loadMap(maps[currentLevel]);
     Canvas canvas = new Canvas(
             map.getWidth() * Tiles.TILE_WIDTH,

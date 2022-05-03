@@ -3,6 +3,7 @@ package com.codecool.dungeoncrawl.logic;
 import com.codecool.dungeoncrawl.logic.actors.Actor;
 import com.codecool.dungeoncrawl.logic.enemies.Enemy;
 import com.codecool.dungeoncrawl.logic.items.Key;
+import com.codecool.dungeoncrawl.logic.landscapes.Landscape;
 import com.codecool.dungeoncrawl.logic.obstacles.Obstacle;
 import com.codecool.dungeoncrawl.logic.weapons.Weapon;
 
@@ -13,6 +14,8 @@ public class Cell implements Drawable {
     private Weapon weapon;
     private Obstacle obstacle;
     private Key key;
+
+    private Landscape landscape;
     private final GameMap gameMap;
     private final int x, y;
 
@@ -37,6 +40,10 @@ public class Cell implements Drawable {
 
     public void setObstacle(Obstacle obstacle) {
         this.obstacle = obstacle;
+    }
+
+    public void setLandscape(Landscape landscape) {
+        this.landscape = landscape;
     }
 
     public void setEnemy(Enemy enemy) {

@@ -1,15 +1,14 @@
 package com.codecool.dungeoncrawl.logic;
 
-import com.codecool.dungeoncrawl.logic.enemies.Enemy;
 import com.codecool.dungeoncrawl.logic.actors.Player;
 
 import java.io.InputStream;
-import java.util.List;
 import java.util.Scanner;
 
 public class MapLoader {
     public static GameMap loadMap(String mapName) {
         InputStream is = MapLoader.class.getResourceAsStream(mapName);
+        assert is != null;
         Scanner scanner = new Scanner(is);
 
         int width = scanner.nextInt();
@@ -65,9 +64,11 @@ public class MapLoader {
                             break;
                         case '$':
                             cell.setType(CellType.BRIDGE);
+                            map.addBridge(cell);
                             break;
                         case 't':
                             cell.setType(CellType.TREE);
+                            map.addTree(cell);
                             break;
                         case 'h':
                             cell.setType(CellType.HOUSE);
@@ -81,10 +82,11 @@ public class MapLoader {
                             break;
                         case 'u':
                             cell.setType(CellType.BUSH);
+                            map.addBush(cell);
                             break;
                         case 'n':
                             cell.setType(CellType.KNIGHT);
-                            map.addKnight(cell, 20, 10);
+                            map.addKnight(cell, 30, 15);
                             break;
                         case 'T':
                             cell.setType(CellType.TELEPORT);

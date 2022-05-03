@@ -6,6 +6,10 @@ import com.codecool.dungeoncrawl.logic.enemies.Enemy;
 import com.codecool.dungeoncrawl.logic.enemies.Knight;
 import com.codecool.dungeoncrawl.logic.enemies.Skeleton;
 import com.codecool.dungeoncrawl.logic.items.Key;
+import com.codecool.dungeoncrawl.logic.landscapes.Bridge;
+import com.codecool.dungeoncrawl.logic.landscapes.Bush;
+import com.codecool.dungeoncrawl.logic.landscapes.Landscape;
+import com.codecool.dungeoncrawl.logic.landscapes.Tree;
 import com.codecool.dungeoncrawl.logic.obstacles.Door;
 import com.codecool.dungeoncrawl.logic.obstacles.Fence;
 import com.codecool.dungeoncrawl.logic.obstacles.Obstacle;
@@ -87,6 +91,21 @@ public class GameMap {
     public void addFence(Cell cell) {
         Obstacle fence = new Fence(cell);
         cell.setObstacle(fence);
+    }
+
+    public void addBridge(Cell cell) {
+        Landscape bridge = new Bridge(cell);
+        cell.setLandscape(bridge);
+    }
+
+    public void addTree(Cell cell) {
+        Landscape tree = new Tree(cell);
+        cell.setLandscape(tree);
+    }
+
+    public void addBush(Cell cell) {
+        Landscape bush = new Bush(cell);
+        cell.setLandscape(bush);
     }
 
     public void removeSkeleton(Cell cell) {
