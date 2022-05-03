@@ -17,6 +17,7 @@ public class GameMap {
     private final Skeleton[][] skeletons;
     private final Weapon[][] weapons;
 
+
     public GameMap(int width, int height, CellType defaultCellType) {
         this.width = width;
         this.height = height;
@@ -61,8 +62,8 @@ public class GameMap {
         return player;
     }
 
-    public Skeleton getSkeleton(Cell cell) {
-        return skeletons[cell.getX()][cell.getY()];
+    public Skeleton[][] getSkeleton() {
+        return skeletons;
     }
 
     public int getWidth() {

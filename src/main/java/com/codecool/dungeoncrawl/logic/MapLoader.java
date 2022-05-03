@@ -1,22 +1,34 @@
 package com.codecool.dungeoncrawl.logic;
 
+import com.codecool.dungeoncrawl.logic.actors.Enemy;
 import com.codecool.dungeoncrawl.logic.actors.Player;
 import com.codecool.dungeoncrawl.logic.actors.Skeleton;
 import com.codecool.dungeoncrawl.logic.weapons.Sword;
 import com.codecool.dungeoncrawl.logic.weapons.Weapon;
+import com.sun.scenario.animation.shared.ClipEnvelope;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
+import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Scanner;
 
 public class MapLoader {
-    public static GameMap loadMap() {
-        InputStream is = MapLoader.class.getResourceAsStream("/map2.txt");
-
+    public static GameMap loadMap(List<Enemy> enemies , String mapName) {
+        InputStream is = MapLoader.class.getResourceAsStream(mapName);
         Scanner scanner = new Scanner(is);
+
         int width = scanner.nextInt();
         int height = scanner.nextInt();
 
+
         scanner.nextLine(); // empty line
+
+
 
         GameMap map = new GameMap(width, height, CellType.EMPTY);
         for (int y = 0; y < height; y++) {
@@ -100,6 +112,7 @@ public class MapLoader {
                 }
             }
         }
+
         return map;
     }
 

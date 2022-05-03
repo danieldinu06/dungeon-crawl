@@ -14,7 +14,7 @@ public class Skeleton extends Actor {
         return "skeleton";
     }
 
-    public void move(){
+    public int[] move(int x){
         int dx = 0;
         int dy = 0;
         switch (getMovementNumber()){
@@ -25,6 +25,7 @@ public class Skeleton extends Actor {
             case 2:
                 dx = 0;
                 dy = 1;
+                break;
             case 3:
                 dx = -1;
                 dy = 0;
@@ -34,7 +35,10 @@ public class Skeleton extends Actor {
                 dy = 0;
                 break;
         }
+        return new int[]{dx, dy};
     }
+
+
 
     public int getMovementNumber(){
         Random number = new Random();
