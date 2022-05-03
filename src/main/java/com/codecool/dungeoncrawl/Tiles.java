@@ -44,6 +44,8 @@ public class Tiles {
         tileMap.put("axe", new Tile(8, 29));
         tileMap.put("peasant", new Tile(25, 1));
         tileMap.put("end", new Tile(23, 11));
+        tileMap.put("peak", new Tile(1, 12));
+        tileMap.put("highland", new Tile(2, 11));
 
     }
 

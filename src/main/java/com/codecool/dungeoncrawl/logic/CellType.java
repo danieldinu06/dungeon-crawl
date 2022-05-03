@@ -21,6 +21,8 @@ public enum CellType {
     TELEPORT("beacon"),
     PEASANT("peasant"),
     WOLF("wolf"),
+    PEAK("peak"),
+    HIGHLAND("highland"),
     END("end"),
     WALL("wall");
 

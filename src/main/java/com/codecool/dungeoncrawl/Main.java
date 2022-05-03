@@ -36,6 +36,7 @@ import java.util.ArrayList;
 public class Main extends Application {
     private final static String[] maps = {"/map.txt", "/map2.txt", "/map3.txt"};
     private int currentLevel = 0;
+
     ArrayList<Enemy> enemies = new ArrayList<>();
     GameMap map = MapLoader.loadMap(enemies, maps[currentLevel]);
     Canvas canvas = new Canvas(
@@ -113,9 +114,9 @@ public class Main extends Application {
                 map.getPlayer().move(1,0);
                 refresh();
                 break;
-            case R:
+            case T:
                 currentLevel = 0;
-                enemies = new ArrayList<Enemy>();
+                enemies = new ArrayList<>();
                 map = MapLoader.loadMap(enemies, maps[currentLevel]);
                 refresh();
                 break;
