@@ -99,6 +99,7 @@ public class MapLoader {
                             break;
                         case 'p':
                             cell.setType(CellType.PEASANT);
+                            map.addPeasant(cell);
                             break;
                         case 'e':
                             cell.setType(CellType.END);

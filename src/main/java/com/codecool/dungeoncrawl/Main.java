@@ -30,8 +30,6 @@ public class Main extends Application {
     Label attackLabel = new Label();
     Label inventoryLabel = new Label();
 
-
-
     public static void main(String[] args) {
         launch(args);
     }

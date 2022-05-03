@@ -125,6 +125,11 @@ public class GameMap {
         cell.setObstacle(peak);
     }
 
+    public void addPeasant(Cell cell) {
+        Obstacle peasant = new Peasant(cell);
+        cell.setObstacle(peasant);
+    }
+
     public void removeWeapon(Cell cell) {
         weapons.remove(cell.getWeapon());
         cells[cell.getX()][cell.getY()].setType(CellType.FLOOR);
