@@ -1,10 +1,12 @@
 package com.codecool.dungeoncrawl;
 
 import com.codecool.dungeoncrawl.logic.Cell;
+import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
 import com.codecool.dungeoncrawl.logic.enemies.Enemy;
 import javafx.application.Application;
+import javafx.concurrent.Task;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -17,9 +19,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import static javafx.animation.Animation.INDEFINITE;
+
 public class Main extends Application {
     private final static String[] maps = {"/map.txt", "/map2.txt", "/map3.txt"};
-    private int currentLevel = 1;
+    private int currentLevel = 0;
     GameMap map = MapLoader.loadMap(maps[currentLevel]);
     Canvas canvas = new Canvas(
             map.getWidth() * Tiles.TILE_WIDTH,
@@ -29,6 +33,8 @@ public class Main extends Application {
     Label healthLabel = new Label();
     Label attackLabel = new Label();
     Label inventoryLabel = new Label();
+
+
 
     public static void main(String[] args) {
         launch(args);
@@ -72,37 +78,54 @@ public class Main extends Application {
         primaryStage.show();
 
         //quitButton.setOnAction(this::handleQuitButtonEvent);
+
+
+
+
     }
 
     private void handleQuitButtonEvent(javafx.event.ActionEvent actionEvent) {
         System.exit(100);
     }
 
+    private void moveEnemies() {
+        map.getEnemies().forEach(Enemy::move);
+    }
+
     private void onKeyPressed(KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
             case UP:
+                System.out.println(map.getEnemies());
                 map.getPlayer().move(0, -1);
+                moveEnemies();
                 refresh();
                 break;
             case DOWN:
                 map.getPlayer().move(0, 1);
+                moveEnemies();
                 refresh();
                 break;
             case LEFT:
                 map.getPlayer().move(-1, 0);
+                moveEnemies();
                 refresh();
                 break;
             case RIGHT:
                 map.getPlayer().move(1,0);
+                moveEnemies();
                 refresh();
                 break;
             case T:
                 currentLevel = 0;
                 map = MapLoader.loadMap(maps[currentLevel]);
                 map = MapLoader.loadMap(maps[currentLevel]);
-
                 refresh();
                 break;
+        }
+        if (map.getPlayer().getCell().getType().equals(CellType.TELEPORT)) {
+            currentLevel++;
+            map = MapLoader.loadMap(maps[currentLevel]);
+            refresh();
         }
         if (map.getPlayer().getHealth() <= 0) {
             /* TODO exit game and show gameOver scene */

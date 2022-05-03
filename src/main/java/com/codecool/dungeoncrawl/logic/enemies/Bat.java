@@ -16,4 +16,6 @@ public class Bat extends Enemy{
     public int[] move() {
         return new int[0];
     }
+
+
 }

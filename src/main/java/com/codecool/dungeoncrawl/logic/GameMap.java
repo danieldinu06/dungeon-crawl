@@ -140,6 +140,10 @@ public class GameMap {
         cells[cell.getX()][cell.getY()].setType(CellType.FLOOR);
     }
 
+    public ArrayList<Enemy> getEnemies() {
+        return enemies;
+    }
+
     public Player getPlayer() {
         return player;
     }

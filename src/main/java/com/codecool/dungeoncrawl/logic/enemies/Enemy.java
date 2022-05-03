@@ -47,4 +47,5 @@ public abstract class Enemy implements Drawable {
                 nextCell.getType() != CellType.SKELETON;
     }
     public abstract int[] move();
+
 }

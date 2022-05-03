@@ -29,6 +29,8 @@ public abstract class Actor implements Drawable {
                 nextCell.getEnemy() == null;
     }
 
+
+
     public void move(int dx, int dy) {
         Cell nextCell = cell.getNeighbor(dx, dy);
         if (restrictMovement(nextCell)) {
@@ -69,6 +71,7 @@ public abstract class Actor implements Drawable {
                 money -= 3;
             }
         }
+
     }
 
     public boolean pickUpWeapon() {
