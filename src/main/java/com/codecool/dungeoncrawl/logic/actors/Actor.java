@@ -12,7 +12,7 @@ public abstract class Actor implements Drawable {
     private int health = 10;
     private int attack = 5;
     private boolean picked = false;
-    private ArrayList<String> weapons = new ArrayList<>();
+    private final ArrayList<String> weapons = new ArrayList<>();
 
     public Actor(Cell cell) {
         this.cell = cell;

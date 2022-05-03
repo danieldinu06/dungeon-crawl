@@ -32,7 +32,6 @@ public class Main extends Application {
     Label attackLabel = new Label();
     Label inventoryLabel = new Label();
 
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -52,7 +51,8 @@ public class Main extends Application {
         ui.add(new Label("Inventory: "), 0, 10);
         ui.add(inventoryLabel, 10, 0);
 
-//        ui.add(quitButton, 50, 150);
+        ui.add(quitButton, 50, 150);
+        quitButton.setOnAction(this::handleQuitButtonEvent);
 
 
 
@@ -72,6 +72,10 @@ public class Main extends Application {
 
         primaryStage.setTitle("Dungeon Crawl");
         primaryStage.show();
+    }
+
+    private void handleQuitButtonEvent(javafx.event.ActionEvent actionEvent) {
+        System.exit(100);
     }
 
     private void onKeyPressed(KeyEvent keyEvent) {
