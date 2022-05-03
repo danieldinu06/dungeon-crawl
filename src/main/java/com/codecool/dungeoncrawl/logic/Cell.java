@@ -1,12 +1,18 @@
 package com.codecool.dungeoncrawl.logic;
 
 import com.codecool.dungeoncrawl.logic.actors.Actor;
+import com.codecool.dungeoncrawl.logic.enemies.Enemy;
+import com.codecool.dungeoncrawl.logic.items.Key;
+import com.codecool.dungeoncrawl.logic.obstacles.Obstacle;
 import com.codecool.dungeoncrawl.logic.weapons.Weapon;
 
 public class Cell implements Drawable {
     private CellType type;
     private Actor actor;
+    private Enemy enemy;
     private Weapon weapon;
+    private Obstacle obstacle;
+    private Key key;
     private final GameMap gameMap;
     private final int x, y;
 
@@ -29,13 +35,29 @@ public class Cell implements Drawable {
         this.actor = actor;
     }
 
+    public void setObstacle(Obstacle obstacle) {
+        this.obstacle = obstacle;
+    }
+
+    public void setEnemy(Enemy enemy) {
+        this.enemy = enemy;
+    }
+
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
+    }
+
+    public void setKey(Key key) {
+        this.key = key;
     }
 
     public Actor getActor() {
         return actor;
     }
+
+    public Obstacle getObstacle() { return obstacle; }
+
+    public Enemy getEnemy() { return enemy; }
 
     public Weapon getWeapon() { return weapon; }
 
