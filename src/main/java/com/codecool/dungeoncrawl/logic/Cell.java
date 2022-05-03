@@ -56,10 +56,6 @@ public class Cell implements Drawable {
         this.weapon = weapon;
     }
 
-    public void setDoor(Door door) {
-        this.door = door;
-    }
-
     public void setKey(Key key) {
         this.key = key;
     }
@@ -73,6 +69,10 @@ public class Cell implements Drawable {
     public Enemy getEnemy() { return enemy; }
 
     public Weapon getWeapon() { return weapon; }
+
+    public Key getKey() { return key; }
+
+    public Door getDoor() { return door; }
 
     public Cell getNeighbor(int dx, int dy) {
         return gameMap.getCell(x + dx, y + dy);

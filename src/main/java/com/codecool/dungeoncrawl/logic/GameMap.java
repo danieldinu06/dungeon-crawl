@@ -125,16 +125,6 @@ public class GameMap {
         cell.setObstacle(peak);
     }
 
-    public void addTombstone(Cell cell) {
-        Landscape tombstone = new Tombstone(cell);
-        cell.setLandscape(tombstone);
-    }
-
-    public void removeSkeleton(Cell cell) {
-        enemies.remove(cell.getEnemy());
-        cells[cell.getX()][cell.getY()].setType(CellType.FLOOR);
-    }
-
     public void removeWeapon(Cell cell) {
         weapons.remove(cell.getWeapon());
         cells[cell.getX()][cell.getY()].setType(CellType.FLOOR);
@@ -142,10 +132,6 @@ public class GameMap {
 
     public Player getPlayer() {
         return player;
-    }
-
-    public ArrayList<Enemy> getEnemies() {
-        return enemies;
     }
 
     public int getWidth() {

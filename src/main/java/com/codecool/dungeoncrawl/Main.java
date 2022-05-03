@@ -3,6 +3,7 @@ package com.codecool.dungeoncrawl;
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
+import com.codecool.dungeoncrawl.logic.enemies.Enemy;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -18,7 +19,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     private final static String[] maps = {"/map.txt", "/map2.txt", "/map3.txt"};
-    private int currentLevel = 0;
+    private int currentLevel = 1;
     GameMap map = MapLoader.loadMap(maps[currentLevel]);
     Canvas canvas = new Canvas(
             map.getWidth() * Tiles.TILE_WIDTH,
@@ -105,8 +106,12 @@ public class Main extends Application {
                 refresh();
                 break;
         }
-
-//        refreshSkeletons();
+        if (map.getPlayer().getHealth() <= 0) {
+            /* TODO exit game and show gameOver scene */
+        }
+        /* TODO uncomment when implemented
+        refreshEnemies();
+        */
 
         if (map.getPlayer().pickUpWeapon()) {
             map.removeWeapon(map.getPlayer().getCell());
@@ -114,12 +119,13 @@ public class Main extends Application {
         }
 
     }
-
-//    public void refreshSkeletons() {
-//        for (Skeleton skeleton : map.getEnemies()) {
-//            System.out.println(skeleton.getCell());
-//        }
-//    }
+    /* TODO make enemies move
+    public void refreshEnemies() {
+        for (Enemy enemy : map.getEnemies()) {
+            System.out.println(enemy);
+            enemy.move();
+        }
+    }*/
 
     Sound sound = new Sound();
 

@@ -47,6 +47,7 @@ public class Tiles {
         tileMap.put("peak", new Tile(1, 12));
         tileMap.put("highland", new Tile(2, 11));
         tileMap.put("tombstone", new Tile(0, 14));
+        tileMap.put("unlockeddoor", new Tile(6, 9));
 
     }
 

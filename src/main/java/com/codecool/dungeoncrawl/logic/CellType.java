@@ -24,7 +24,8 @@ public enum CellType {
     HIGHLAND("highland"),
     END("end"),
     WALL("wall"),
-    TOMBSTONE("tombstone");
+    TOMBSTONE("tombstone"),
+    UNLOCKEDDOOR("unlockeddoor");
 
 
     private final String tileName;
