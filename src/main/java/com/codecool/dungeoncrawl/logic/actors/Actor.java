@@ -29,8 +29,7 @@ public abstract class Actor implements Drawable {
                 nextCell.getType() != CellType.BEAR &&
 //                nextCell.getType() != CellType.KNIGHT &&
                 nextCell.getType() != CellType.SKELETON &&
-                nextCell.getType() != CellType.PEAK &&
-                nextCell.getType() != CellType.SKELETON;
+                nextCell.getType() != CellType.PEAK;
     }
 
     public void move(int dx, int dy) {
