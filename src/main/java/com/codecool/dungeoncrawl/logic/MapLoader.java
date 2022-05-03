@@ -45,6 +45,7 @@ public class MapLoader {
                             break;
                         case 'd':
                             cell.setType(CellType.DOOR);
+                            map.addDoor(cell);
                             break;
                         case 'k':
                             cell.setType(CellType.KEY);
@@ -52,7 +53,7 @@ public class MapLoader {
                             break;
                         case 'b':
                             cell.setType(CellType.BAT);
-                            map.addBat(cell, 3, 1);
+                            map.addBat(cell, 2, 1);
                             break;
                         case '/':
                             cell.setType(CellType.SWORD);
@@ -75,6 +76,7 @@ public class MapLoader {
                             break;
                         case '>':
                             cell.setType(CellType.BEAR);
+                            map.addBear(cell, 8, 4);
                             break;
                         case 'f':
                             cell.setType(CellType.FENCE);
@@ -103,9 +105,11 @@ public class MapLoader {
                             break;
                         case '!':
                             cell.setType(CellType.PEAK);
+                            map.addPeak(cell);
                             break;
                         case 'l':
                             cell.setType(CellType.HIGHLAND);
+                            map.addHighland(cell);
                             break;
                         case '@':
                             cell.setType(CellType.FLOOR);

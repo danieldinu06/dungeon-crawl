@@ -3,7 +3,8 @@ package com.codecool.dungeoncrawl.logic.actors;
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.Drawable;
-import com.codecool.dungeoncrawl.logic.weapons.Weapon;
+import com.codecool.dungeoncrawl.logic.enemies.Enemy;
+import com.codecool.dungeoncrawl.logic.landscapes.Tombstone;
 
 import java.util.ArrayList;
 
@@ -20,16 +21,8 @@ public abstract class Actor implements Drawable {
     }
 
     public boolean restrictMovement(Cell nextCell) {
-        return nextCell.getType() != CellType.WALL &&
-                nextCell.getType() != CellType.WATER &&
-                nextCell.getType() != CellType.FENCE &&
-                nextCell.getType() != CellType.HOUSE &&
-//                nextCell.getType() != CellType.SWORD &&
-//                nextCell.getType() != CellType.AXE &&
-                nextCell.getType() != CellType.BEAR &&
-//                nextCell.getType() != CellType.KNIGHT &&
-                nextCell.getType() != CellType.SKELETON &&
-                nextCell.getType() != CellType.PEAK;
+        return nextCell.getObstacle() == null &&
+                nextCell.getEnemy() == null;
     }
 
     public void move(int dx, int dy) {
@@ -43,6 +36,14 @@ public abstract class Actor implements Drawable {
             }
             nextCell.setActor(this);
             cell = nextCell;
+        }
+        if (nextCell.getEnemy() != null) {
+            fight(this, nextCell.getEnemy());
+            if (nextCell.getEnemy().getHealth() <= 0) {
+                nextCell.setEnemy(null);
+                nextCell.setLandscape(new Tombstone(nextCell));
+                nextCell.setType(CellType.TOMBSTONE);
+            }
         }
     }
 
@@ -76,11 +77,8 @@ public abstract class Actor implements Drawable {
         return nextCell.getType().equals(CellType.DOOR);
     }
 
-    public boolean fight(Player player, Actor monster){
-        while(player.getHealth() >= 1 && monster.getHealth() >= 1){
-            monster.setHealth(monster.getHealth() - player.getAttack());
-            player.setHealth(monster.getHealth() - player.getAttack());
-        }
-        return monster.getHealth() <= 0;
+    public void fight(Actor player, Enemy enemy){
+        enemy.setHealth(enemy.getHealth() - player.getAttack());
+        player.setHealth(player.getHealth() - enemy.getAttack());
     }
 }
