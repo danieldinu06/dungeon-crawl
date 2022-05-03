@@ -12,7 +12,7 @@ public abstract class Actor implements Drawable {
     private int health = 10;
     private int attack = 5;
     private boolean picked = false;
-    private final ArrayList<String> weapons = new ArrayList<>();
+    private final ArrayList<String> items = new ArrayList<>();
 
     public Actor(Cell cell) {
         this.cell = cell;
@@ -28,7 +28,8 @@ public abstract class Actor implements Drawable {
 //                nextCell.getType() != CellType.AXE &&
                 nextCell.getType() != CellType.BEAR &&
 //                nextCell.getType() != CellType.KNIGHT &&
-                nextCell.getType() != CellType.SKELETON;
+                nextCell.getType() != CellType.SKELETON &&
+                nextCell.getType() != CellType.PEAK;
     }
 
     public void move(int dx, int dy) {
@@ -37,7 +38,7 @@ public abstract class Actor implements Drawable {
             cell.setActor(null);
             if (nextCell.getType() == CellType.SWORD || nextCell.getType() == CellType.AXE) {
                 this.attack += nextCell.getWeapon().getAttack();
-                weapons.add(nextCell.getWeapon().getTileName());
+                items.add(nextCell.getWeapon().getTileName());
                 this.picked = true;
             }
             nextCell.setActor(this);
@@ -53,20 +54,10 @@ public abstract class Actor implements Drawable {
         this.picked = false;
     }
 
-    public int getHealth() {
-        return health;
-    }
+    public int getHealth() { return health; }
 
     public Cell getCell() {
         return cell;
-    }
-
-    public int getX() {
-        return cell.getX();
-    }
-
-    public int getY() {
-        return cell.getY();
     }
 
     public int getAttack(){
@@ -77,8 +68,8 @@ public abstract class Actor implements Drawable {
         this.health = health;
     }
 
-    public ArrayList<String> getWeapons() {
-        return weapons;
+    public ArrayList<String> getItems() {
+        return items;
     }
 
 

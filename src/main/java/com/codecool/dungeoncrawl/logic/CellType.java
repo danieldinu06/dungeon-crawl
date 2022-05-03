@@ -22,7 +22,8 @@ public enum CellType {
     PEASANT("peasant"),
     WOLF("wolf"),
     END("end"),
-    WALL("wall");
+    WALL("wall"),
+    PEAK("peak");
 
 
     private final String tileName;

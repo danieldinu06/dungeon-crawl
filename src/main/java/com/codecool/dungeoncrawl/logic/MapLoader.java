@@ -1,24 +1,14 @@
 package com.codecool.dungeoncrawl.logic;
 
-import com.codecool.dungeoncrawl.logic.actors.Enemy;
+import com.codecool.dungeoncrawl.logic.enemies.Enemy;
 import com.codecool.dungeoncrawl.logic.actors.Player;
-import com.codecool.dungeoncrawl.logic.actors.Skeleton;
-import com.codecool.dungeoncrawl.logic.weapons.Sword;
-import com.codecool.dungeoncrawl.logic.weapons.Weapon;
-import com.sun.scenario.animation.shared.ClipEnvelope;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Scanner;
 
 public class MapLoader {
-    public static GameMap loadMap(List<Enemy> enemies , String mapName) {
+    public static GameMap loadMap(String mapName) {
         InputStream is = MapLoader.class.getResourceAsStream(mapName);
         Scanner scanner = new Scanner(is);
 
@@ -45,22 +35,25 @@ public class MapLoader {
                             break;
                         case '#':
                             cell.setType(CellType.WALL);
+                            map.addWall(cell);
                             break;
                         case '.':
                             cell.setType(CellType.FLOOR);
                             break;
                         case 's':
                             cell.setType(CellType.SKELETON);
-                            map.addSkeleton(cell);
+                            map.addSkeleton(cell, 5, 2);
                             break;
                         case 'd':
                             cell.setType(CellType.DOOR);
                             break;
                         case 'k':
                             cell.setType(CellType.KEY);
+                            map.addKey(cell);
                             break;
                         case 'b':
                             cell.setType(CellType.BAT);
+                            map.addBat(cell, 3, 1);
                             break;
                         case '/':
                             cell.setType(CellType.SWORD);
@@ -68,6 +61,7 @@ public class MapLoader {
                             break;
                         case 'w':
                             cell.setType(CellType.WATER);
+                            map.addWater(cell);
                             break;
                         case '$':
                             cell.setType(CellType.BRIDGE);
@@ -83,12 +77,14 @@ public class MapLoader {
                             break;
                         case 'f':
                             cell.setType(CellType.FENCE);
+                            map.addFence(cell);
                             break;
                         case 'u':
                             cell.setType(CellType.BUSH);
                             break;
                         case 'n':
                             cell.setType(CellType.KNIGHT);
+                            map.addKnight(cell, 20, 10);
                             break;
                         case '%':
                             cell.setType(CellType.TELEPORT);

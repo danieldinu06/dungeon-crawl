@@ -7,12 +7,12 @@
 #......uuuuu#   #..#          #..uuu#
 #######ww$ww#   #..#          #uuuu.#
       #ww$ww#   #..#          #uuuuu#
-      #ww$ww#   #..###        #uuuua#
+      #ww$ww#   #..##         #uuuua#
       #ww$ww#   #...#     ####uuu####
 #######ww$ww#######.#     #huuuuupp#
 #/ttttttt.ttf.......#     #huuuuuph#
 #ttttt>tt.ttf..s....#     #w$wwwwww#
-#tthhtttt...d.....s.#     #w$wwwwww#
+#tthhtttt.........s.#     #w$wwwwww#
 #tthhttt....f...s...#     #....#####
-#ktttttttuttf.s....s#     #....d..e#
+#ttttttttuttf.s....s#     #....d..e#
 #####################     ##########
