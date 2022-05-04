@@ -25,7 +25,7 @@ import static javafx.animation.Animation.INDEFINITE;
 
 public class Main extends Application {
     private final static String[] maps = {"/map.txt", "/map2.txt", "/map3.txt"};
-    private int currentLevel = 0;
+    private int currentLevel = 1;
     GameMap map = MapLoader.loadMap(maps[currentLevel]);
     Canvas canvas = new Canvas(
             map.getWidth() * Tiles.TILE_WIDTH,
