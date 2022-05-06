@@ -13,6 +13,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -34,8 +35,8 @@ public class Main extends Application {
             map.getHeight() * Tiles.TILE_WIDTH);
     GraphicsContext context = canvas.getGraphicsContext2D();
     Button quitButton = new Button("Quit");
-    Label healthLabel = new Label();
-    Label attackLabel = new Label();
+    Label healthText = new Label();
+    Label attackText = new Label();
     Label inventoryLabel = new Label();
 
 
@@ -47,21 +48,31 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         GridPane ui = new GridPane();
-        ui.setPrefWidth(200);
-        ui.setPadding(new Insets(10));
+        ui.setPrefWidth(300);
+        ui.setPadding(new Insets(30, 30, 30, 30));
+//        ui.setVgap(8);
+//        ui.setHgap(10);
 
-        ui.add(new Label("Health: "), 0, 0);
-        ui.add(healthLabel, 1, 0);
+        Label healthLabel = new Label("Health");
+        GridPane.setConstraints(healthLabel, 0, 0);
 
-        ui.add(new Label("Attack Damage: "), 0, 5);
-        ui.add(attackLabel, 1, 0);
+        GridPane.setConstraints(healthText, 1, 0);
 
-        ui.add(new Label("Inventory: "), 0, 10);
-        ui.add(inventoryLabel, 10, 0);
+        Label attackLabel = new Label("Attack");
+        GridPane.setConstraints(attackLabel, 0, 1);
 
-        ui.add(quitButton, 50, 150);
+        GridPane.setConstraints(attackText, 1, 1);
+
+//        Label inventoryLabel = new Label("Inventory");
+//        GridPane.setConstraints(inventoryLabel, 0, 2);
+
+        Button quitButton = new Button("Quit");
+        GridPane.setConstraints(quitButton, 0, 5);
+
         quitButton.setOnAction(this::handleQuitButtonEvent);
 
+
+        ui.getChildren().addAll(healthLabel, healthText, attackLabel, attackText, quitButton);
 
         quitButton.getStyleClass().add("quit-button");
 
@@ -79,14 +90,14 @@ public class Main extends Application {
 
         primaryStage.setTitle("Dungeon Crawl");
         primaryStage.show();
-        playMusic();
+        //playMusic();
         quitButton.setOnAction(this::handleQuitButtonEvent);
     }
 
-    private void playMusic(){
-        MediaPlayer mediaPlayer = new MediaPlayer(new Media(getClass().getResource("/sound/music.mp3").toExternalForm()));
-        mediaPlayer.play();
-    }
+//    private void playMusic(){
+//        MediaPlayer mediaPlayer = new MediaPlayer(new Media(getClass().getResource("/sound/music.mp3").toExternalForm()));
+//        mediaPlayer.play();
+//    }
 
     private void handleQuitButtonEvent(javafx.event.ActionEvent actionEvent) {
         System.exit(100);
@@ -169,7 +180,7 @@ public class Main extends Application {
                 }
             }
         }
-        healthLabel.setText("" + map.getPlayer().getHealth());
-        attackLabel.setText("\n" + map.getPlayer().getAttack());
+        healthText.setText(String.valueOf(map.getPlayer().getHealth()));
+        attackText.setText(String.valueOf(map.getPlayer().getAttack()));
     }
 }
