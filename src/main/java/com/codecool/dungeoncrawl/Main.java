@@ -23,6 +23,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static javafx.animation.Animation.INDEFINITE;
 
@@ -37,7 +38,7 @@ public class Main extends Application {
     Button quitButton = new Button("Quit");
     Label healthText = new Label();
     Label attackText = new Label();
-    Label inventoryLabel = new Label();
+    Label inventoryText = new Label();
 
 
 
@@ -50,21 +51,18 @@ public class Main extends Application {
         GridPane ui = new GridPane();
         ui.setPrefWidth(300);
         ui.setPadding(new Insets(30, 30, 30, 30));
-//        ui.setVgap(8);
-//        ui.setHgap(10);
 
         Label healthLabel = new Label("Health");
         GridPane.setConstraints(healthLabel, 0, 0);
-
         GridPane.setConstraints(healthText, 1, 0);
 
         Label attackLabel = new Label("Attack");
         GridPane.setConstraints(attackLabel, 0, 1);
-
         GridPane.setConstraints(attackText, 1, 1);
 
-//        Label inventoryLabel = new Label("Inventory");
-//        GridPane.setConstraints(inventoryLabel, 0, 2);
+        Label inventoryLabel = new Label("Inventory");
+        GridPane.setConstraints(inventoryLabel, 0, 2);
+        GridPane.setConstraints(inventoryText, 1, 2);
 
         Button quitButton = new Button("Quit");
         GridPane.setConstraints(quitButton, 0, 5);
@@ -72,7 +70,7 @@ public class Main extends Application {
         quitButton.setOnAction(this::handleQuitButtonEvent);
 
 
-        ui.getChildren().addAll(healthLabel, healthText, attackLabel, attackText, quitButton);
+        ui.getChildren().addAll(healthLabel, healthText, attackLabel, attackText, inventoryLabel, inventoryText, quitButton);
 
         quitButton.getStyleClass().add("quit-button");
 
@@ -161,10 +159,14 @@ public class Main extends Application {
         }
 
         if (map.getPlayer().pickUpWeapon()) {
+            if (Objects.equals(inventoryText.getText(), "")) {
+                inventoryText.setText(map.getPlayer().getCell().getWeapon().getTileName());
+            } else {
+                inventoryText.setText(inventoryText.getText() + ", " + map.getPlayer().getCell().getWeapon().getTileName());
+            }
             map.removeWeapon(map.getPlayer().getCell());
             map.getPlayer().setPicked();
         }
-
     }
 
     private void refresh() {
