@@ -21,6 +21,8 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 import static javafx.animation.Animation.INDEFINITE;
 
 public class Main extends Application {
@@ -79,10 +81,6 @@ public class Main extends Application {
         primaryStage.show();
         playMusic();
         quitButton.setOnAction(this::handleQuitButtonEvent);
-
-
-
-
     }
 
     private void playMusic(){
@@ -95,7 +93,7 @@ public class Main extends Application {
     }
 
     private void moveEnemies() {
-//        map.getEnemies().forEach(Enemy::move);
+        //map.getEnemies().forEach(Enemy::move);
     }
 
     private void onKeyPressed(KeyEvent keyEvent) {
@@ -129,15 +127,27 @@ public class Main extends Application {
         }
         if (map.getPlayer().getCell().getType().equals(CellType.TELEPORT)) {
             currentLevel++;
+            int currentHealth = map.getPlayer().getHealth();
+            int currentAttack = map.getPlayer().getAttack();
+            ArrayList<String> currentItems = map.getPlayer().getItems();
+
             map = MapLoader.loadMap(maps[currentLevel]);
+            map.getPlayer().setHealth(currentHealth);
+            map.getPlayer().setAttack(currentAttack);
+            map.getPlayer().setItems(currentItems);
+
+            context.getCanvas().setHeight(map.getHeight() * Tiles.TILE_WIDTH);
+            context.getCanvas().setWidth(map.getWidth() * Tiles.TILE_WIDTH);
             refresh();
         }
-        if (map.getPlayer().getHealth() <= 0) {
-            /* TODO exit game and show gameOver scene */
+        if (map.getPlayer().getCell().getType().equals(CellType.END)) {
+            System.out.println("You win!");
+            System.exit(100);
         }
-        /* TODO uncomment when implemented
-        refreshEnemies();
-        */
+        if (map.getPlayer().getHealth() <= 0) {
+            System.out.println("Game Over!");
+            System.exit(100);
+        }
 
         if (map.getPlayer().pickUpWeapon()) {
             map.removeWeapon(map.getPlayer().getCell());
@@ -145,17 +155,9 @@ public class Main extends Application {
         }
 
     }
-    /* TODO make enemies move
-    public void refreshEnemies() {
-        for (Enemy enemy : map.getEnemies()) {
-            System.out.println(enemy);
-            enemy.move();
-        }
-    }*/
-
 
     private void refresh() {
-        context.setFill(Color.BLACK);
+        context.setFill(Color.WHITE);
         context.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         for (int x = 0; x < map.getWidth(); x++) {
             for (int y = 0; y < map.getHeight(); y++) {

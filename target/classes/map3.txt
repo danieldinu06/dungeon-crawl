@@ -1,4 +1,4 @@
-37 17
+37 24
 #############   #####################
 #....uuuuuu/#   #...n...............#
 #.@...uuuuuu#   #..####.#######.....#
@@ -13,6 +13,12 @@
 #/ttttttt.ttf.......#     #huuuuuph#
 #ttttt>tt.ttf..s....#     #w$wwwwww#
 #tthhtttt.........s.#     #w$wwwwww#
-#tthhttt....f...s...#     #....#####
-#ttttttttuttf.s....s#     #....d..e#
+#tthhttt....f...s...#     #...t#####
+#ttttttttuttf.s....s#     #...t#!#!#
+#ttttttttuttffffffff#     #...##!#!#
+#tttuuuttutt#########     #...##lll#
+#tttuttttutt####llll#     #.ttt#...#
+#tuttutttutt####l!!!#     #.tttt##t#
+#tttttuttutt####l!!!#     #....d..e#
+#tttuutttutt####l!!!#     #....#...#
 #####################     ##########

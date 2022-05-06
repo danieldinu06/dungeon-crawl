@@ -17,8 +17,6 @@ public class GameMap {
     private final Cell[][] cells;
     private Player player;
     private final ArrayList<Enemy> enemies = new ArrayList<>();
-    private final ArrayList<Weapon> weapons = new ArrayList<>();
-
 
     public GameMap(int width, int height, CellType defaultCellType) {
         this.width = width;
@@ -65,13 +63,11 @@ public class GameMap {
 
     public void addSword(Cell cell) {
         Weapon sword = new Sword(5);
-        weapons.add(sword);
         cell.setWeapon(sword);
     }
 
     public void addAxe(Cell cell) {
         Weapon axe = new Axe(10);
-        weapons.add(axe);
         cell.setWeapon(axe);
     }
 
@@ -136,7 +132,6 @@ public class GameMap {
     }
 
     public void removeWeapon(Cell cell) {
-        weapons.remove(cell.getWeapon());
         cells[cell.getX()][cell.getY()].setType(CellType.FLOOR);
     }
 

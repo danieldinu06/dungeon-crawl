@@ -17,7 +17,7 @@ public abstract class Actor implements Drawable {
     private boolean picked = false;
 
     private boolean hasKey = false;
-    private final ArrayList<String> items = new ArrayList<>();
+    private ArrayList<String> items = new ArrayList<>();
 
     public Actor(Cell cell) {
         this.cell = cell;
@@ -98,6 +98,14 @@ public abstract class Actor implements Drawable {
 
     public void setHealth(int health){
         this.health = health;
+    }
+
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
+    public void setItems(ArrayList<String> items) {
+        this.items = items;
     }
 
     public ArrayList<String> getItems() {

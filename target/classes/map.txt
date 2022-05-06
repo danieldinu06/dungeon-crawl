@@ -1,12 +1,12 @@
-25 20
+37 24
 #############
-#uuuuuuutuuu#    ########
-#uu.s.u.s.uu######.uutuu#
-#uuu.utuuuuuuuuu..uuub.t#
-#uuuuuu..uuu######uuuuu.#
-#uuu..suuuuu#    #tu.utt#
-#.uuuuuuuuuu#    #.uuttt#
-#uuuuuu.uuuu#    #uuutt!#
+#uuuuuuutuuu#    ###############
+#uu.s.u.s.uu######.uutuutttl!!!!#
+#uuu.utuuuuuuuuu..uuub.ttttlllll#
+#uuuuuu..uuu######uuuuuttttttttl#
+#uuu..suuuuu#    #tu.uttttuutttt#
+#.uuuuuuuuuu#    #.uutttttttuutt#
+#uuuuuu.uuuu#    #uuutt!########
 #####.u######    ###..###
     #uu#           #..#
     #tu#           #..#
@@ -18,4 +18,7 @@
   #uuuuutu#      #......#
   #uuu@uut#      #..#d#.#
   #thhttuu#      #..#T#.#
-  #########       ######
+  #tttttuu#      ########
+  #tttttuu#
+  #tttttuu#
+  #########
