@@ -1,0 +1,24 @@
+37 24
+#############
+#uuuuuuutuuu#    ###############
+#uu.s.u.s.uu######.uutuutttl!!!!#
+#uuu.utuuuuuuuuu..uuub.ttttlllll#
+#uuuuuu..uuu######uuuuuttttttttl#
+#uuu..suuuuu#    #tu.uttttuutttt#
+#.uuuuuuuuuu#    #.uutttttttuutt#
+#uuuuuu.uuuu#    #uuutt!########
+#####.u######    ###..###
+    #uu#           #..#
+    #tu#           #..#
+    #uu#          ##..##
+  ###uu####      #k.....#
+  #uuuuu/t#      #......#
+  #uuuuttu#      #......#
+  #ttuuutu#      #......#
+  #uuuuutu#      #......#
+  #uuu@uut#      #..#d#.#
+  #thhttuu#      #..#T#.#
+  #tttttuu#      ########
+  #tttttuu#
+  #tttttuu#
+  #########
